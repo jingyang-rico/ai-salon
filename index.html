@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>AI Salon · 周报</title>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --card: #171b24;
+    --card-border: #262d3c;
+    --text: #eef0f5;
+    --text-dim: #aab3c5;
+    --accent: #9b8cff;
+    --accent-2: #f5a623;
+    --ok: #3ddc97;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI",
+      "Hiragino Sans GB", "Microsoft YaHei", Roboto, "Helvetica Neue", sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 56px 28px 96px; }
+  header { margin-bottom: 44px; }
+  header h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.3; }
+  header h1 .app { color: var(--accent); }
+  header .meta { color: var(--text-dim); font-size: 15px; margin-top: 8px; }
+  header .meta a { color: var(--text-dim); }
+
+  .issue-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+  }
+  .issue-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; }
+  .issue-head h2 { font-size: 25px; font-weight: 700; letter-spacing: -0.01em; }
+  .issue-head h2 a { color: var(--text); text-decoration: none; }
+  .issue-head h2 a:hover { color: var(--accent); }
+  .coverage-badge {
+    font-size: 13.5px; color: var(--text-dim);
+    background: rgba(155, 140, 255, 0.12);
+    border: 1px solid rgba(155, 140, 255, 0.28);
+    border-radius: 999px; padding: 2px 12px;
+  }
+  .headline-chip {
+    font-size: 13.5px; font-weight: 600; color: var(--accent-2);
+    background: rgba(245, 166, 35, 0.13);
+    border: 1px solid rgba(245, 166, 35, 0.3);
+    border-radius: 999px; padding: 2px 12px;
+  }
+  .intro { color: var(--text-dim); font-size: 16.5px; margin-bottom: 10px; }
+  .note {
+    color: var(--text-dim); font-size: 15px; margin-bottom: 22px;
+    padding: 10px 14px; background: rgba(108, 178, 255, 0.08);
+    border: 1px solid rgba(108, 178, 255, 0.2); border-radius: 10px;
+  }
+
+  h3.section-title {
+    font-size: 18px; font-weight: 700; margin: 28px 0 12px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--card-border);
+  }
+  h4.sub-title { font-size: 16px; font-weight: 700; margin: 18px 0 8px; color: var(--text); }
+  .sub-title .range { font-weight: 500; color: var(--text-dim); font-size: 14px; margin-left: 8px; }
+
+  table.data-table { width: 100%; border-collapse: collapse; font-size: 15.5px; margin-bottom: 6px; }
+  table.data-table th, table.data-table td {
+    text-align: left; padding: 8px 10px; border-bottom: 1px solid rgba(38, 45, 60, 0.7);
+    vertical-align: top;
+  }
+  table.data-table th { color: var(--text-dim); font-weight: 600; font-size: 13.5px; }
+  table.data-table code {
+    background: rgba(155, 140, 255, 0.12); border-radius: 5px; padding: 1px 6px; font-size: 14px;
+  }
+
+  .headline-box {
+    background: rgba(245, 166, 35, 0.08);
+    border: 1px solid rgba(245, 166, 35, 0.25);
+    border-radius: 12px; padding: 16px 18px; margin-bottom: 16px;
+  }
+  .headline-box .hb-title { font-weight: 700; margin-bottom: 6px; }
+  .headline-box .hb-summary { color: var(--text-dim); margin-bottom: 10px; }
+  .headline-box ul { padding-left: 20px; }
+  .headline-box li { margin-bottom: 6px; font-size: 15.5px; }
+
+  ul.plain-list { padding-left: 20px; margin-bottom: 6px; }
+  ul.plain-list li { margin-bottom: 6px; font-size: 15.5px; }
+
+  .refs-list { list-style: none; padding-left: 0; }
+  .refs-list li { font-size: 15px; margin-bottom: 6px; }
+
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted rgba(155, 140, 255, 0.5); }
+  a:hover { border-bottom-style: solid; }
+
+  footer { margin-top: 56px; color: var(--text-dim); font-size: 14px; text-align: center; }
+  .empty-state { color: var(--text-dim); text-align: center; padding: 60px 0; }
+
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .container { padding: 36px 16px 64px; }
+    header h1 { font-size: 26px; }
+    .issue-card { padding: 20px 18px; }
+    table.data-table { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1><span class="app">AI Salon</span> 周报</h1>
+    <p class="meta">
+      <a href="https://github.com/jingyang-rico/ai-salon">jingyang-rico/ai-salon</a>
+      · 最近更新 <span id="updated-at">—</span>
+    </p>
+  </header>
+  <main id="report"></main>
+  <footer>由定时运行的 Claude 每周五自动生成，汇总 AI 工具更新与业界新闻。</footer>
+</div>
+<script src="report-data.js"></script>
+<script>
+  function esc(s) {
+    const div = document.createElement("div");
+    div.textContent = s == null ? "" : s;
+    return div.innerHTML;
+  }
+
+  function renderTable(headers, rows, cellRenderers) {
+    if (!rows || !rows.length) return "";
+    const thead = "<tr>" + headers.map(h => `<th>${esc(h)}</th>`).join("") + "</tr>";
+    const tbody = rows.map(row => {
+      const cells = row.map((cell, i) => {
+        const rendered = cellRenderers && cellRenderers[i] ? cellRenderers[i](cell) : esc(cell);
+        return `<td>${rendered}</td>`;
+      }).join("");
+      return `<tr>${cells}</tr>`;
+    }).join("");
+    return `<table class="data-table">${thead}${tbody}</table>`;
+  }
+
+  function renderToolVersions(tv) {
+    if (!tv || !tv.rows || !tv.rows.length) return "";
+    const rows = tv.rows.map(r => [r.tool, r.version, r.update]);
+    const table = renderTable(["工具", "最新版本", "update"], rows, [
+      esc, v => `<strong>${esc(v)}</strong>`, v => `<code>${esc(v)}</code>`
+    ]);
+    const asOf = tv.asOf ? `<p class="intro" style="margin-top:6px;font-size:14px;">版本号截至 ${esc(tv.asOf)}</p>` : "";
+    return `<h3 class="section-title">工具版本速递</h3>${table}${asOf}`;
+  }
+
+  function renderToolUpdates(list) {
+    if (!list || !list.length) return "";
+    const body = list.map(t => {
+      const rows = (t.items || []).map(it => [it.feature, it.detail]);
+      const table = renderTable(["更新", "说明"], rows, [v => `<strong>${esc(v)}</strong>`, esc]);
+      return `<h4 class="sub-title">${esc(t.tool)}<span class="range">${esc(t.versionRange || "")}</span></h4>${table}`;
+    }).join("");
+    return `<h3 class="section-title">工具版本重点更新</h3>${body}`;
+  }
+
+  function renderIndustryNews(news) {
+    if (!news) return "";
+    let html = `<h3 class="section-title">AI 新产品速览（业界新闻）</h3>`;
+    if (news.headline) {
+      const h = news.headline;
+      const points = (h.points || []).map(p => `<li>${esc(p)}</li>`).join("");
+      html += `<div class="headline-box">
+        <div class="hb-title">${esc(h.title)}</div>
+        <div class="hb-summary">${esc(h.summary)}</div>
+        <ul>${points}</ul>
+      </div>`;
+    }
+    if (news.others && news.others.length) {
+      const rows = news.others.map(o => [o.product, o.org, o.date, o.desc]);
+      html += renderTable(["产品/功能", "发布方", "日期", "简介"], rows, [
+        v => `<strong>${esc(v)}</strong>`, esc, esc, esc
+      ]);
+    }
+    if (news.trending && news.trending.length) {
+      const items = news.trending.map(t => {
+        const name = t.url ? `<a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.name)}</a>` : esc(t.name);
+        return `<li>${name}${t.desc ? " — " + esc(t.desc) : ""}</li>`;
+      }).join("");
+      html += `<h4 class="sub-title">GitHub Trending / 开源生态</h4><ul class="plain-list">${items}</ul>`;
+    }
+    if (news.trends && news.trends.length) {
+      const items = news.trends.map(t => `<li>${esc(t)}</li>`).join("");
+      html += `<h4 class="sub-title">行业趋势观察</h4><ul class="plain-list">${items}</ul>`;
+    }
+    return html;
+  }
+
+  function renderRecommendations(recs) {
+    if (!recs || !recs.length) return "";
+    const rows = recs.map(r => [r.name, r.desc]);
+    const table = renderTable(["产品/功能", "简介"], rows, [v => `<strong>${esc(v)}</strong>`, esc]);
+    return `<h3 class="section-title">工具/产品推荐</h3>${table}`;
+  }
+
+  function renderClosingNotes(notes) {
+    if (!notes) return "";
+    const intro = notes.intro ? notes.intro.split("\n\n").map(p => `<p class="intro">${esc(p)}</p>`).join("") : "";
+    const table = notes.table ? renderTable(notes.table.headers, notes.table.rows) : "";
+    const outro = notes.outro ? `<p class="intro">${esc(notes.outro)}</p>` : "";
+    return `<h3 class="section-title">写在最后</h3>${intro}${table}${outro}`;
+  }
+
+  function renderReferences(refs) {
+    if (!refs || !refs.length) return "";
+    const items = refs.map(r => `<li><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a></li>`).join("");
+    return `<h3 class="section-title">参考来源</h3><ul class="refs-list">${items}</ul>`;
+  }
+
+  function render() {
+    const data = window.AI_SALON;
+    document.getElementById("updated-at").textContent = data.updatedAt;
+    const main = document.getElementById("report");
+
+    if (!data.issues || !data.issues.length) {
+      main.innerHTML = `<div class="empty-state">暂无周报，等待下一次自动生成。</div>`;
+      return;
+    }
+
+    main.innerHTML = data.issues.map(issue => {
+      const anchor = "issue-" + issue.date;
+      const coverage = issue.coverage ? `<span class="coverage-badge">${esc(issue.coverage.from)} → ${esc(issue.coverage.to)}</span>` : "";
+      const headlineChip = issue.headline ? `<span class="headline-chip">头条：${esc(issue.headline)}</span>` : "";
+      const note = issue.note ? `<div class="note">${esc(issue.note)}</div>` : "";
+      return `
+        <section class="issue-card" id="${anchor}">
+          <div class="issue-head">
+            <h2><a href="#${anchor}">${esc(issue.date)}</a></h2>
+            ${coverage}
+            ${headlineChip}
+          </div>
+          <p class="intro">${esc(issue.intro || "")}</p>
+          ${note}
+          ${renderToolVersions(issue.toolVersions)}
+          ${renderToolUpdates(issue.toolUpdates)}
+          ${renderIndustryNews(issue.industryNews)}
+          ${renderRecommendations(issue.recommendations)}
+          ${renderClosingNotes(issue.closingNotes)}
+          ${renderReferences(issue.references)}
+        </section>`;
+    }).join("");
+  }
+
+  render();
+</script>
+</body>
+</html>
