@@ -5,9 +5,92 @@
 // lastReportDate: the `date` of issues[0] (the most recently published issue).
 // The weekly job uses it as the start of the next coverage window.
 window.AI_SALON = {
-  "updatedAt": "2026-06-12",
-  "lastReportDate": "2026-06-12",
+  "updatedAt": "2026-07-03",
+  "lastReportDate": "2026-07-03",
   "issues": [
+    {
+      "date": "2026-07-03",
+      "coverage": { "from": "2026-06-12", "to": "2026-07-03" },
+      "headline": "Claude Sonnet 5",
+      "intro": "本期聚焦工具更新与业界新闻（覆盖区间 6/12 → 7/3）；\"AI 项目进展\"与\"开放讨论\"本期从略。头条：Claude Sonnet 5（6/30 发布，成为 Free / Pro 默认模型，agentic 能力大幅提升、报价显著低于 Opus 4.8）。",
+      "note": "⚠️ 本期最大看点其实是一场三周的插曲：6/12 商务部一纸令下，Anthropic 被迫在全球范围下线 Fable 5 / Mythos 5（起因是 Amazon 研究者用 Fable 5 生成了漏洞利用代码）；6/30 在 Anthropic 重训安全分类器、拦截率提升到 99%+ 后，出口管制被撤销，两个模型恢复上线（详见下方\"新产品速览\"）。",
+      "toolVersions": {
+        "asOf": "7/2",
+        "rows": [
+          { "tool": "Claude Code (Anthropic)", "version": "v2.1.199", "update": "claude update" },
+          { "tool": "Codex (OpenAI)", "version": "v0.142.5", "update": "npm update -g @openai/codex" },
+          { "tool": "OpenClaw", "version": "2026.6.11", "update": "openclaw update" }
+        ]
+      },
+      "toolUpdates": [
+        {
+          "tool": "Claude Code",
+          "versionRange": "v2.1.175 → v2.1.199",
+          "items": [
+            { "feature": "Claude Sonnet 5 成为默认模型（v2.1.197）", "detail": "1M-token 上下文窗口；详见下方\"新产品速览\"头条" },
+            { "feature": "Claude in Chrome 正式 GA（v2.1.198）", "detail": "浏览器 agent 从预览转为正式可用；同版本 subagent 默认转后台运行、新增 /dataviz skill" },
+            { "feature": "Background agent 自动提交 + 开 draft PR（v2.1.198）", "detail": "代码完成后台 agent 可直接 commit / push / 开 PR，无需手动触发" },
+            { "feature": "破坏性命令默认拦截（v2.1.183）", "detail": "auto mode 下 git commit --amend（非本 agent 提交）、terraform/pulumi/cdk destroy 等默认阻止，除非用户明确要求" },
+            { "feature": "Sandbox 凭据隔离（v2.1.187）", "detail": "新增 sandbox.credentials 设置，可阻止 agent 在沙箱内读取凭据文件" },
+            { "feature": "claude mcp login/logout（v2.1.186）", "detail": "MCP 服务端账号可直接在 CLI 里登录/登出，无需再手动改配置" },
+            { "feature": "Retry watchdog 默认值提升（v2.1.199）", "detail": "CLAUDE_CODE_RETRY_WATCHDOG 默认重试次数上调到 300，长跑任务遇限流更抗造" }
+          ]
+        },
+        {
+          "tool": "Codex CLI",
+          "versionRange": "v0.139.0 → v0.142.5",
+          "items": [
+            { "feature": "Rollout token 预算可配置", "detail": "可为 agent thread 设置 token 预算，超支自动中止 turn 并提示剩余额度" },
+            { "feature": "Indexed web search 模式", "detail": "开放实时检索，但只允许访问服务端预先核准的 URL，兼顾联网能力与安全" },
+            { "feature": "/plugins 分区浏览", "detail": "远程插件按 OpenAI Curated / Workspace / Shared with me 分区，turn 内可直接推荐并安装相关插件" },
+            { "feature": "定时提醒 + 查询当前时间", "detail": "支持接收 UTC 定时提醒、直接查询当前时间（含客户端 app-server 时钟）" },
+            { "feature": "DigitalOcean Droplet Workspace 插件", "detail": "可一键在 DigitalOcean 上开 Droplet、配 SSH，作为 Codex 的远程工作区" }
+          ]
+        }
+      ],
+      "industryNews": {
+        "headline": {
+          "title": "🔥 Claude Sonnet 5（6/30 发布）— 本期重点",
+          "summary": "一句话：Anthropic 把 Sonnet 系列升级为\"迄今最 agentic 的 Sonnet\"，性能逼近 Opus 4.8，价格却大幅更低，直接成为 Free / Pro 默认模型。",
+          "points": [
+            "Agentic 能力大跃进 — 早期用户反馈：以往 Sonnet 系列做到一半就停的复杂任务，Sonnet 5 能够独立跑完；推理、工具调用、代码、知识工作全面优于 Sonnet 4.6。",
+            "安全性同步提升 — 安全评估显示 Sonnet 5 在 agentic 场景下不良行为发生率低于 Sonnet 4.6，总体更安全可用。",
+            "定价 — 早鸟价 $2 / $10 per M（input / output，至 8/31），随后转为标准价 $3 / $15 per M；覆盖 Free、Pro、Max、Team、Enterprise 全线。",
+            "定位 — 成为 Free / Pro 用户默认模型，为 Opus 4.8 提供更便宜的 agentic 替代路径，呼应\"跑更多 agent、而不是更贵的模型\"这条降本趋势。"
+          ]
+        },
+        "others": [
+          { "product": "Fable 5 / Mythos 5 出口管制撤销", "org": "Anthropic", "date": "6/30", "desc": "商务部 6/12 一度要求 Anthropic 全球下线两款模型（起因 Amazon 研究者用 Fable 5 生成漏洞利用代码）；Anthropic 重训安全分类器（拦截率提至 99%+）后，出口管制于 6/30 撤销，模型恢复上线" },
+          { "product": "Grok Imagine Video 1.5", "org": "xAI", "date": "6/17", "desc": "image-to-video 模型，登顶 Image-to-Video Arena；原生同步音频，定价 $4.20/分钟（约为 Sora 2 的 1/7）" },
+          { "product": "Gemini 3.5 Pro 跳票", "org": "Google", "date": "6/30", "desc": "I/O 上承诺 6 月 GA，但 6/30 如期落空，官方未正式确认、仅表示仍在企业早期测试阶段，预计顺延至 7 月" }
+        ],
+        "trending": [
+          { "name": "OpenClaw", "url": "https://github.com/openclaw/openclaw/releases", "desc": "6/30 发布稳定版 2026.6.11，聚焦可靠性修复；7/2 beta 版接入 GPT-5.6、新增 openclaw attach 外部 harness 挂载能力" },
+          { "name": "anthropics/claude-plugins-official", "url": "https://github.com/anthropics/claude-plugins-official", "desc": "Anthropic 官方 Claude Code 插件目录仓库，登上 GitHub Trending" },
+          { "name": "stablyai/orca / garrytan/gstack", "url": "https://github.com/trending", "desc": "\"跑一个 agent 舰队\"成为新话题：orca 面向桌面/移动同时管理多个并行 coding agent，gstack 是一套 23 个角色分工的 Claude Code 预设工具集" }
+        ],
+        "trends": [
+          "Sonnet 级模型对齐旗舰能力、大幅降价 — Claude Sonnet 5 逼近 Opus 4.8 的表现却明显更便宜，\"用更便宜的模型跑更多 agent\"成为主流打法。",
+          "前沿模型的出口管制从理论风险变成真实运营中断 — Fable 5/Mythos 5 被下线三周才恢复，模型能力和地缘政治合规已深度绑定。",
+          "agent 编排从单 agent 转向\"agent 舰队\"管理 — orca、gstack 等工具兴起，重心从写好一个 agent 转向同时调度、监控一批 agent。"
+        ]
+      },
+      "recommendations": [
+        { "name": "Claude Sonnet 5 做长跑任务的默认驱动", "desc": "agentic 能力接近 Opus 4.8 但价格更低，适合作为长时间自主任务的默认模型" },
+        { "name": "Codex rollout token 预算", "desc": "给长跑 agent thread 配置 token 预算上限，避免失控跑飞消耗" },
+        { "name": "Claude Code sandbox.credentials", "desc": "给 agent 沙箱加一道口子，阻止误读凭据文件" }
+      ],
+      "references": [
+        { "title": "Claude Sonnet 5 发布", "url": "https://www.anthropic.com/news/claude-sonnet-5" },
+        { "title": "TechCrunch：Sonnet 5 更便宜的 agent 方案", "url": "https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/" },
+        { "title": "CNBC：Fable 5 / Mythos 5 出口管制撤销", "url": "https://www.cnbc.com/2026/06/30/anthropic-says-trump-admin-has-lifted-export-controls-on-claude-fable-5-and-mythos-5.html" },
+        { "title": "Claude Code Changelog", "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" },
+        { "title": "Codex Changelog", "url": "https://developers.openai.com/codex/changelog" },
+        { "title": "OpenClaw Releases", "url": "https://github.com/openclaw/openclaw/releases" },
+        { "title": "xAI：Grok Imagine Video 1.5", "url": "https://x.ai/news/grok-imagine-video-1-5" },
+        { "title": "Gemini 3.5 Pro 跳票报道", "url": "https://cryptobriefing.com/google-delays-gemini-35-pro-launch-to-july-2026/" }
+      ]
+    },
     {
       "date": "2026-06-12",
       "coverage": { "from": "2026-05-29", "to": "2026-06-12" },
