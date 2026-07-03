@@ -110,7 +110,16 @@ After pushing, post a short summary to the **#ai-salon** Slack channel via
 the Slack MCP tools: look up the channel by name (`ai-salon`), then post a
 message containing the week's headline (if any), 2-4 bullet highlights, and
 a link to the page (deep-link to the new issue's anchor, e.g.
-`https://jingyang-rico.github.io/ai-salon/#issue-YYYY-MM-DD`). If Slack
+`https://jingyang-rico.github.io/ai-salon/#issue-YYYY-MM-DD`).
+
+**Formatting is Slack mrkdwn, not CommonMark** — this is the one place this
+automation writes prose by hand, so get it right:
+- Links: `<https://url|display text>`. **Never** use `[display text](https://url)`
+  — Slack does not parse that syntax and will show the literal brackets/parens
+  instead of a clickable link.
+- Bold: single asterisks `*text*`, not `**text**`.
+
+If Slack
 posting fails for any reason, don't fail the whole run — the gh-pages
 commit/push is the primary deliverable; note the Slack failure in the final
 report text instead.
