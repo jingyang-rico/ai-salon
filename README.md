@@ -106,3 +106,5 @@ a link to the page (deep-link to the new issue's anchor, e.g.
 posting fails for any reason, don't fail the whole run — the gh-pages
 commit/push is the primary deliverable; note the Slack failure in the final
 report text instead.
+
+<!-- redeploy trigger 20260703T030757Z -->
