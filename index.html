@@ -7,14 +7,13 @@
 <title>AI Salon · 周报</title>
 <style>
   :root {
-    --bg: #0d0f14;
-    --card: #171b24;
-    --card-border: #262d3c;
-    --text: #eef0f5;
-    --text-dim: #aab3c5;
-    --accent: #9b8cff;
-    --accent-2: #f5a623;
-    --ok: #3ddc97;
+    --bg: #f7f7f9;
+    --card: #ffffff;
+    --card-border: #e5e7ee;
+    --text: #14161c;
+    --text-dim: #666e7d;
+    --accent: #6d4aff;
+    --accent-2: #b45309;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -39,28 +38,29 @@
     border-radius: 16px;
     padding: 28px 32px;
     margin-bottom: 40px;
+    box-shadow: 0 1px 2px rgba(20, 22, 28, 0.04), 0 4px 12px rgba(20, 22, 28, 0.04);
   }
   .issue-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; }
   .issue-head h2 { font-size: 25px; font-weight: 700; letter-spacing: -0.01em; }
   .issue-head h2 a { color: var(--text); text-decoration: none; }
   .issue-head h2 a:hover { color: var(--accent); }
   .coverage-badge {
-    font-size: 13.5px; color: var(--text-dim);
-    background: rgba(155, 140, 255, 0.12);
-    border: 1px solid rgba(155, 140, 255, 0.28);
+    font-size: 13.5px; color: var(--accent);
+    background: rgba(109, 74, 255, 0.08);
+    border: 1px solid rgba(109, 74, 255, 0.25);
     border-radius: 999px; padding: 2px 12px;
   }
   .headline-chip {
     font-size: 13.5px; font-weight: 600; color: var(--accent-2);
-    background: rgba(245, 166, 35, 0.13);
-    border: 1px solid rgba(245, 166, 35, 0.3);
+    background: rgba(180, 83, 9, 0.1);
+    border: 1px solid rgba(180, 83, 9, 0.28);
     border-radius: 999px; padding: 2px 12px;
   }
   .intro { color: var(--text-dim); font-size: 16.5px; margin-bottom: 10px; }
   .note {
     color: var(--text-dim); font-size: 15px; margin-bottom: 22px;
-    padding: 10px 14px; background: rgba(108, 178, 255, 0.08);
-    border: 1px solid rgba(108, 178, 255, 0.2); border-radius: 10px;
+    padding: 10px 14px; background: rgba(37, 99, 235, 0.06);
+    border: 1px solid rgba(37, 99, 235, 0.18); border-radius: 10px;
   }
 
   h3.section-title {
@@ -72,17 +72,17 @@
 
   table.data-table { width: 100%; border-collapse: collapse; font-size: 15.5px; margin-bottom: 6px; }
   table.data-table th, table.data-table td {
-    text-align: left; padding: 8px 10px; border-bottom: 1px solid rgba(38, 45, 60, 0.7);
+    text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--card-border);
     vertical-align: top;
   }
   table.data-table th { color: var(--text-dim); font-weight: 600; font-size: 13.5px; }
   table.data-table code {
-    background: rgba(155, 140, 255, 0.12); border-radius: 5px; padding: 1px 6px; font-size: 14px;
+    background: rgba(109, 74, 255, 0.1); border-radius: 5px; padding: 1px 6px; font-size: 14px;
   }
 
   .headline-box {
-    background: rgba(245, 166, 35, 0.08);
-    border: 1px solid rgba(245, 166, 35, 0.25);
+    background: rgba(180, 83, 9, 0.05);
+    border: 1px solid rgba(180, 83, 9, 0.2);
     border-radius: 12px; padding: 16px 18px; margin-bottom: 16px;
   }
   .headline-box .hb-title { font-weight: 700; margin-bottom: 6px; }
@@ -96,7 +96,7 @@
   .refs-list { list-style: none; padding-left: 0; }
   .refs-list li { font-size: 15px; margin-bottom: 6px; }
 
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted rgba(155, 140, 255, 0.5); }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted rgba(109, 74, 255, 0.4); }
   a:hover { border-bottom-style: solid; }
 
   footer { margin-top: 56px; color: var(--text-dim); font-size: 14px; text-align: center; }

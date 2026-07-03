@@ -12,7 +12,7 @@ window.AI_SALON = {
       "date": "2026-07-03",
       "coverage": { "from": "2026-06-12", "to": "2026-07-03" },
       "headline": "Claude Sonnet 5",
-      "intro": "本期聚焦工具更新与业界新闻（覆盖区间 6/12 → 7/3）；\"AI 项目进展\"与\"开放讨论\"本期从略。头条：Claude Sonnet 5（6/30 发布，成为 Free / Pro 默认模型，agentic 能力大幅提升、报价显著低于 Opus 4.8）。",
+      "intro": "本期聚焦工具更新与业界新闻（覆盖区间 6/12 → 7/3）。头条：Claude Sonnet 5（6/30 发布，成为 Free / Pro 默认模型，agentic 能力大幅提升、报价显著低于 Opus 4.8）。",
       "note": "⚠️ 本期最大看点其实是一场三周的插曲：6/12 商务部一纸令下，Anthropic 被迫在全球范围下线 Fable 5 / Mythos 5（起因是 Amazon 研究者用 Fable 5 生成了漏洞利用代码）；6/30 在 Anthropic 重训安全分类器、拦截率提升到 99%+ 后，出口管制被撤销，两个模型恢复上线（详见下方\"新产品速览\"）。",
       "toolVersions": {
         "asOf": "7/2",
@@ -95,7 +95,7 @@ window.AI_SALON = {
       "date": "2026-06-12",
       "coverage": { "from": "2026-05-29", "to": "2026-06-12" },
       "headline": "Claude Fable 5",
-      "intro": "本期聚焦工具更新与业界新闻 / 新工具（覆盖区间 5/29 → 6/12）；\"AI 项目进展\"与\"开放讨论\"本期从略。头条：Claude Fable 5（6/9 发布，Anthropic 首个公开的 Mythos-class 旗舰）。",
+      "intro": "本期聚焦工具更新与业界新闻 / 新工具（覆盖区间 5/29 → 6/12）。头条：Claude Fable 5（6/9 发布，Anthropic 首个公开的 Mythos-class 旗舰）。",
       "note": "📈 预告：双周会接下来会从\"分享新闻进展\"逐步升级玩法——转向长程任务 / 主动式 agent 等更复杂的实战用法，详见文末「写在最后」。",
       "toolVersions": {
         "asOf": "6/11",

@@ -93,6 +93,12 @@ in Chinese; technical terms, product names, and code identifiers stay in
 their original form (matching how the source Confluence doc — the AI Dev
 双周会 report this format is modeled on — writes them).
 
+The source Confluence doc this format is modeled on also had "AI 项目进展"
+and "开放讨论" sections (project updates / open floor discussion at a live
+meeting). This automated report has no such sections — don't mention them
+being "skipped" or "略" in `intro`; just summarize what's actually in this
+issue.
+
 `node --check report-data.js` should pass (it must stay valid JS) before
 committing.
 
@@ -106,5 +112,3 @@ a link to the page (deep-link to the new issue's anchor, e.g.
 posting fails for any reason, don't fail the whole run — the gh-pages
 commit/push is the primary deliverable; note the Slack failure in the final
 report text instead.
-
-<!-- redeploy trigger 20260703T030757Z -->
