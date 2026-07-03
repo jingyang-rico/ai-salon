@@ -14,6 +14,25 @@
     --text-dim: #666e7d;
     --accent: #6d4aff;
     --accent-2: #b45309;
+    --accent-rgb: 109, 74, 255;
+    --accent2-rgb: 180, 83, 9;
+    --note-rgb: 37, 99, 235;
+    --card-shadow: 0 1px 2px rgba(20, 22, 28, 0.04), 0 4px 12px rgba(20, 22, 28, 0.04);
+    --on-accent: #ffffff;
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d0f14;
+    --card: #171b24;
+    --card-border: #262d3c;
+    --text: #eef0f5;
+    --text-dim: #aab3c5;
+    --accent: #9b8cff;
+    --accent-2: #f5a623;
+    --accent-rgb: 155, 140, 255;
+    --accent2-rgb: 245, 166, 35;
+    --note-rgb: 108, 178, 255;
+    --card-shadow: none;
+    --on-accent: #14101f;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -38,7 +57,7 @@
     border-radius: 16px;
     padding: 28px 32px;
     margin-bottom: 40px;
-    box-shadow: 0 1px 2px rgba(20, 22, 28, 0.04), 0 4px 12px rgba(20, 22, 28, 0.04);
+    box-shadow: var(--card-shadow);
   }
   .issue-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; }
   .issue-head h2 { font-size: 25px; font-weight: 700; letter-spacing: -0.01em; }
@@ -46,21 +65,21 @@
   .issue-head h2 a:hover { color: var(--accent); }
   .coverage-badge {
     font-size: 13.5px; color: var(--accent);
-    background: rgba(109, 74, 255, 0.08);
-    border: 1px solid rgba(109, 74, 255, 0.25);
+    background: rgba(var(--accent-rgb), 0.1);
+    border: 1px solid rgba(var(--accent-rgb), 0.28);
     border-radius: 999px; padding: 2px 12px;
   }
   .headline-chip {
     font-size: 13.5px; font-weight: 600; color: var(--accent-2);
-    background: rgba(180, 83, 9, 0.1);
-    border: 1px solid rgba(180, 83, 9, 0.28);
+    background: rgba(var(--accent2-rgb), 0.13);
+    border: 1px solid rgba(var(--accent2-rgb), 0.3);
     border-radius: 999px; padding: 2px 12px;
   }
   .intro { color: var(--text-dim); font-size: 16.5px; margin-bottom: 10px; }
   .note {
     color: var(--text-dim); font-size: 15px; margin-bottom: 22px;
-    padding: 10px 14px; background: rgba(37, 99, 235, 0.06);
-    border: 1px solid rgba(37, 99, 235, 0.18); border-radius: 10px;
+    padding: 10px 14px; background: rgba(var(--note-rgb), 0.08);
+    border: 1px solid rgba(var(--note-rgb), 0.2); border-radius: 10px;
   }
 
   h3.section-title {
@@ -77,12 +96,12 @@
   }
   table.data-table th { color: var(--text-dim); font-weight: 600; font-size: 13.5px; }
   table.data-table code {
-    background: rgba(109, 74, 255, 0.1); border-radius: 5px; padding: 1px 6px; font-size: 14px;
+    background: rgba(var(--accent-rgb), 0.12); border-radius: 5px; padding: 1px 6px; font-size: 14px;
   }
 
   .headline-box {
-    background: rgba(180, 83, 9, 0.05);
-    border: 1px solid rgba(180, 83, 9, 0.2);
+    background: rgba(var(--accent2-rgb), 0.08);
+    border: 1px solid rgba(var(--accent2-rgb), 0.25);
     border-radius: 12px; padding: 16px 18px; margin-bottom: 16px;
   }
   .headline-box .hb-title { font-weight: 700; margin-bottom: 6px; }
@@ -96,16 +115,29 @@
   .refs-list { list-style: none; padding-left: 0; }
   .refs-list li { font-size: 15px; margin-bottom: 6px; }
 
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted rgba(109, 74, 255, 0.4); }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted rgba(var(--accent-rgb), 0.5); }
   a:hover { border-bottom-style: solid; }
 
   footer { margin-top: 56px; color: var(--text-dim); font-size: 14px; text-align: center; }
   .empty-state { color: var(--text-dim); text-align: center; padding: 60px 0; }
 
+  header .top-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .theme-switch {
+    flex: 0 0 auto; display: flex; margin-top: 8px;
+    border: 1px solid var(--card-border); border-radius: 999px;
+    overflow: hidden; background: var(--card);
+  }
+  .theme-switch button {
+    appearance: none; border: none; background: transparent; color: var(--text-dim);
+    font-size: 14px; font-weight: 600; padding: 6px 16px; cursor: pointer; font-family: inherit;
+  }
+  .theme-switch button.active { background: var(--accent); color: var(--on-accent); }
+
   @media (max-width: 560px) {
     body { font-size: 16px; }
     .container { padding: 36px 16px 64px; }
     header h1 { font-size: 26px; }
+    header .top-row { flex-direction: column; }
     .issue-card { padding: 20px 18px; }
     table.data-table { font-size: 14px; }
   }
@@ -114,11 +146,19 @@
 <body>
 <div class="container">
   <header>
-    <h1><span class="app">AI Salon</span> 周报</h1>
-    <p class="meta">
-      <a href="https://github.com/jingyang-rico/ai-salon">jingyang-rico/ai-salon</a>
-      · 最近更新 <span id="updated-at">—</span>
-    </p>
+    <div class="top-row">
+      <div>
+        <h1><span class="app">AI Salon</span> 周报</h1>
+        <p class="meta">
+          <a href="https://github.com/jingyang-rico/ai-salon">jingyang-rico/ai-salon</a>
+          · 最近更新 <span id="updated-at">—</span>
+        </p>
+      </div>
+      <div class="theme-switch" role="group" aria-label="Theme">
+        <button id="btn-light" type="button">浅色</button>
+        <button id="btn-dark" type="button">深色</button>
+      </div>
+    </div>
   </header>
   <main id="report"></main>
   <footer>由定时运行的 Claude 每周五自动生成，汇总 AI 工具更新与业界新闻。</footer>
@@ -250,6 +290,20 @@
         </section>`;
     }).join("");
   }
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    document.getElementById("btn-light").className = theme === "light" ? "active" : "";
+    document.getElementById("btn-dark").className = theme === "dark" ? "active" : "";
+    try { localStorage.setItem("ai-salon-theme", theme); } catch (e) {}
+  }
+
+  document.getElementById("btn-light").addEventListener("click", () => setTheme("light"));
+  document.getElementById("btn-dark").addEventListener("click", () => setTheme("dark"));
+
+  let initialTheme = "light";
+  try { initialTheme = localStorage.getItem("ai-salon-theme") || "light"; } catch (e) {}
+  setTheme(initialTheme);
 
   render();
 </script>

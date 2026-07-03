@@ -35,7 +35,9 @@ directly to `gh-pages`.
 Sources to check every run (skip ones with nothing new in the window):
 
 - **Claude Code**: https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md
-- **Codex CLI**: https://developers.openai.com/codex/changelog
+- **Codex (CLI + desktop/mobile app)**: https://developers.openai.com/codex/changelog
+  — one changelog covers the CLI and the Codex app across platforms
+- **Claude Desktop app**: https://support.claude.com/en/articles/12138966-release-notes
 - **OpenClaw**: check its GitHub releases/changelog
 - General web search for major model/product releases from Anthropic,
   OpenAI, Google, Meta, Microsoft, xAI etc. within the coverage window
