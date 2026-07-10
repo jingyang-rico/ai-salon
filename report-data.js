@@ -5,9 +5,93 @@
 // lastReportDate: the `date` of issues[0] (the most recently published issue).
 // The weekly job uses it as the start of the next coverage window.
 window.AI_SALON = {
-  "updatedAt": "2026-07-03",
-  "lastReportDate": "2026-07-03",
+  "updatedAt": "2026-07-10",
+  "lastReportDate": "2026-07-10",
   "issues": [
+    {
+      "date": "2026-07-10",
+      "coverage": { "from": "2026-07-03", "to": "2026-07-10" },
+      "headline": "GPT-5.6 GA + ChatGPT Work",
+      "intro": "本期聚焦工具更新与业界新闻（覆盖区间 7/3 → 7/10）。头条：GPT-5.6 三档模型（Sol/Terra/Luna）7/9 结束政府关卡限制正式 GA，OpenAI 同步把独立 Codex 桌面应用并入全新 ChatGPT 桌面应用，并推出主打\"甩给它整段工作\"的 ChatGPT Work agent。",
+      "note": "⚠️ Claude Code v2.1.200 起，默认权限模式从 \"default\" 改成了 \"Manual\"（CLI / VS Code / JetBrains 统一切换）。升级后如果习惯了旧的自动放行行为，记得去 /config 或 settings.json 里确认一下当前权限模式，避免被突然多出来的确认打断。",
+      "toolVersions": {
+        "asOf": "7/9",
+        "rows": [
+          { "tool": "Claude Code (Anthropic)", "version": "v2.1.206", "update": "claude update" },
+          { "tool": "Codex (OpenAI)", "version": "v0.144.1", "update": "npm update -g @openai/codex" },
+          { "tool": "OpenClaw", "version": "2026.7.1-beta.3", "update": "openclaw update" }
+        ]
+      },
+      "toolUpdates": [
+        {
+          "tool": "Claude Code",
+          "versionRange": "v2.1.199 → v2.1.206",
+          "items": [
+            { "feature": "默认权限模式改为 Manual（v2.1.200）", "detail": "CLI、--help、VS Code、JetBrains 统一切换；--permission-mode manual 与旧的 default 写法仍兼容" },
+            { "feature": "AskUserQuestion 不再默认自动继续（v2.1.200）", "detail": "需要在 /config 里主动开启空闲超时，才会自动跳过未回答的问题" },
+            { "feature": "Dynamic workflow size 设置（v2.1.202）", "detail": "/config 里可调 workflow 生成的 agent 规模档位（小/中/大），仅为建议档位、非强制上限" },
+            { "feature": "/doctor 升级为完整体检工具，新增别名 /checkup（v2.1.205）", "detail": "可直接诊断并修复常见安装 / 配置问题" },
+            { "feature": "auto mode 新增规则：禁止篡改 session transcript 文件（v2.1.205）", "detail": "防止后台任务的对话记录被意外或恶意改写" },
+            { "feature": "/doctor 新检查项：建议裁剪 checked-in CLAUDE.md（v2.1.206）", "detail": "标出 Claude 本就能从代码库里推导出的内容，建议精简" },
+            { "feature": "/commit-push-pr 自动放行 remote.pushDefault（v2.1.206）", "detail": "配置了推送默认 remote（或仓库只有一个 remote）时，push 无需再手动确认" }
+          ]
+        },
+        {
+          "tool": "Codex CLI",
+          "versionRange": "v0.142.5 → v0.144.1",
+          "items": [
+            { "feature": "内置 GPT-5.6 三档模型（Sol / Terra / Luna）", "detail": "/model 直接切换；1.5M 上下文（GPT-5.5 为 1M）；新增 max（拉长推理链）与 ultra（内部拆分并行 subagent）两档推理模式" },
+            { "feature": "Amazon Bedrock 接入 GPT-5.6 三档模型", "detail": "同步支持 max reasoning effort" },
+            { "feature": "新增 codex remote-control pair", "detail": "为运行中的 daemon 生成手动配对码，方便远程控制配对" },
+            { "feature": "multi-agent delegation 可配置三档", "detail": "禁用 / 仅显式请求 / 主动委派，thread 和 turn 级别均可单独设置" },
+            { "feature": "修复 Linux TUI 渲染问题", "detail": "Ctrl+Z 挂起后用 fg 恢复时，终端渲染不再错乱" }
+          ]
+        }
+      ],
+      "industryNews": {
+        "headline": {
+          "title": "🔥 GPT-5.6 GA + ChatGPT Work（7/9）— 本期重点",
+          "summary": "一句话：OpenAI 用 GPT-5.6（Sol / Terra / Luna 三档）结束为期 13 天的政府关卡限制、正式公开发布，同步把独立 Codex 桌面应用并入全新 ChatGPT 桌面应用，并推出主打\"交给它整段工作\"的 ChatGPT Work agent。",
+          "points": [
+            "三档模型 GA — Sol（旗舰，$5 / $30 per M）、Terra（性价比主力，$2.5 / $15，性能对标 GPT-5.5 但价格减半）、Luna（最快最便宜，$1 / $6）；全部 1.5M 上下文，新增 max（拉长推理链）与 ultra（内部拆分并行 subagent）两档推理模式。",
+            "出关背景 — Sol 在内部网络攻击测试中拿下 96.7%，触及 Preparedness Framework 的\"高风险\"门槛，白宫网络安全 / 科技政策办公室曾要求先限定\"受信合作伙伴\"名单试跑，13 天后于 7/9 解除限制、正式公开（呼应上期 Fable 5 / Mythos 5 的出口管制插曲，前沿模型公开发布和政府审批绑定看起来正在变成常态）。",
+            "Codex 桌面应用并入 ChatGPT — 独立 Codex 桌面 app 升级为全新 ChatGPT 桌面应用（Chat / Work / Codex 三种模式共存同一个壳），可设 Codex 为默认视图、用 Codex 图标；已有 Codex 任务 / 项目原样保留。Codex CLI（终端）不受影响，照常独立运作。",
+            "ChatGPT Work — 新 agent 模式，接入你连接的各类 app / 工作流，把一个目标拆解成步骤、独立跑数小时，直接产出成品（表格、幻灯片、文档、可交互网页）而非聊天记录；Free 到付费全线可见入口，用量按 plan 分档限速。"
+          ]
+        },
+        "others": [
+          { "product": "Claude Cowork 扩展到 web / mobile", "org": "Anthropic", "date": "7/7", "desc": "此前只有桌面版，现在 web 和移动端也能用（Max 用户先行，未来几周扩展到其他 plan）；配合上线延长 Cowork 双倍用量额度至 8/5，媒体解读为直接对标同周发布的 ChatGPT Work" },
+          { "product": "Claude Desktop app v1.19367.0", "org": "Anthropic", "date": "7/7", "desc": "Linux 支持通过 apt 自动更新；命令面板（⌘K / Ctrl+K）可直接归档 / 删除当前 chat、project、task 或 coding session；修复 Linux 图形加速引发的反复崩溃；远程 / SSH session 新增 Files 面板" }
+        ],
+        "trending": [
+          { "name": "OpenClaw", "url": "https://github.com/openclaw/openclaw/releases", "desc": "7/9 发布 2026.7.1-beta.3：接入 GPT-5.6 全系列模型；新增 openclaw attach（把外部 harness 挂载到已有 Gateway session）；Telegram 内可 /login 发起 Codex 配对、实时 steer 运行中的 Codex；新增 on-exit 定时任务类型（监听某条命令退出后唤醒 agent）" },
+          { "name": "DietrichGebert/ponytail", "url": "https://github.com/DietrichGebert/ponytail", "desc": "一周内涨约 8000+ star（现 76k），给 AI agent 装上\"最懒资深工程师\"人格的 skill / plugin，主打 YAGNI、少写代码，号称比基线代码量少 80-94%、成本低 42-75%" },
+          { "name": "firecrawl/firecrawl", "url": "https://github.com/firecrawl/firecrawl", "desc": "147k stars，一周再涨 5100+，抓取网页并结构化成 agent 可用数据的老牌工具持续登顶 trending" }
+        ],
+        "trends": [
+          "桌面 agent 产品把\"甩给它做一整段工作\"做成正式产品线 — ChatGPT Work 与 Claude Cowork web/mobile 几乎同周官宣，两家都在把 coding agent 的能力往通用办公场景泛化。",
+          "前沿模型公开发布继续要过政府关卡 — GPT-5.6 Sol 因触及网络攻击\"高风险\"门槛被限定\"受信合作伙伴\"试跑 13 天，是本月第二次出现类似插曲（上期是 Fable 5 / Mythos 5），模型能力与监管审批绑定看起来要常态化了。",
+          "Agent 人格 / 行为风格类 skill 走红 — ponytail 主打\"让 agent 少写代码\"的极简人格，说明除了功能类插件，\"调教 agent 行为习惯\"本身也开始形成一个小生态。"
+        ]
+      },
+      "recommendations": [
+        { "name": "Codex /model 按场景切档", "desc": "日常用 Terra，难题临时切 Sol 并开 max/ultra 推理模式，兼顾成本和上限" },
+        { "name": "Claude Code /checkup", "desc": "原 /doctor 升级版，一键体检 + 自动修复常见安装 / 配置问题" },
+        { "name": "升级后检查权限模式", "desc": "Claude Code 默认权限模式已变成 Manual，确认 /config 或 settings.json 里的设置还符合预期" }
+      ],
+      "references": [
+        { "title": "GPT-5.6 官宣", "url": "https://openai.com/index/gpt-5-6/" },
+        { "title": "Engadget：GPT-5.6 rollout", "url": "https://www.engadget.com/2210308/openai-rolls-out-gpt5-6-july-9/" },
+        { "title": "TechTimes：GPT-5.6 政府关卡出关", "url": "https://www.techtimes.com/articles/319979/20260709/gpt-56-goes-public-after-12-day-white-house-gate-tests-voluntary-ai-framework.htm" },
+        { "title": "The New Stack：Codex 并入 ChatGPT app，对标 Claude Cowork", "url": "https://thenewstack.io/openai-codex-work-atlas/" },
+        { "title": "Developers Digest：ChatGPT Work 与 Codex 桌面应用", "url": "https://www.developersdigest.tech/blog/chatgpt-work-codex-desktop-app" },
+        { "title": "TechCrunch：Claude Cowork 扩展 web/mobile", "url": "https://techcrunch.com/2026/07/07/the-coding-agent-wars-are-spilling-into-the-rest-of-the-office-claude-cowork/" },
+        { "title": "Claude Code Changelog", "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" },
+        { "title": "Codex Changelog", "url": "https://developers.openai.com/codex/changelog" },
+        { "title": "OpenClaw Releases", "url": "https://github.com/openclaw/openclaw/releases" },
+        { "title": "ponytail（GitHub Trending）", "url": "https://github.com/DietrichGebert/ponytail" }
+      ]
+    },
     {
       "date": "2026-07-03",
       "coverage": { "from": "2026-06-12", "to": "2026-07-03" },
