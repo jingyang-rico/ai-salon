@@ -5,9 +5,101 @@
 // lastReportDate: the `date` of issues[0] (the most recently published issue).
 // The weekly job uses it as the start of the next coverage window.
 window.AI_SALON = {
-  "updatedAt": "2026-07-10",
-  "lastReportDate": "2026-07-10",
+  "updatedAt": "2026-07-17",
+  "lastReportDate": "2026-07-17",
   "issues": [
+    {
+      "date": "2026-07-17",
+      "coverage": { "from": "2026-07-10", "to": "2026-07-17" },
+      "headline": "Kimi K3 — 2.8 万亿参数开源模型",
+      "intro": "本期聚焦工具更新与业界新闻（覆盖区间 7/10 → 7/17）。头条：Moonshot AI 发布 Kimi K3（7/16）——2.8 万亿参数的开源 MoE 模型，号称全球最大开放权重模型，多项基准逼近甚至优于 Fable 5 / GPT-5.6 Sol，被媒体称为一场\"中国式冲击\"。",
+      "note": "⚠️ Claude Code v2.1.212 起，单个 session 默认限制 WebSearch 调用最多 200 次、subagent 派生最多 200 个（超过则自动转后台执行）；重度使用 /workflow 大规模 fan-out 或长任务调研的同学升级后如果发现调用被截断，先去确认是不是撞上了这个新默认上限。",
+      "toolVersions": {
+        "asOf": "7/17",
+        "rows": [
+          { "tool": "Claude Code (Anthropic)", "version": "v2.1.212", "update": "claude update" },
+          { "tool": "Codex (OpenAI)", "version": "v0.144.5", "update": "npm update -g @openai/codex" },
+          { "tool": "OpenClaw", "version": "2026.7.2-beta.1", "update": "openclaw update" }
+        ]
+      },
+      "toolUpdates": [
+        {
+          "tool": "Claude Code",
+          "versionRange": "v2.1.206 → v2.1.212",
+          "items": [
+            { "feature": "Auto mode 无需 opt-in 直接可用（v2.1.207）", "detail": "在 Bedrock / Vertex AI / Foundry 上原生开放，不用再单独申请" },
+            { "feature": "屏幕阅读器模式 + vimInsertModeRemaps（v2.1.208）", "detail": "新增纯文本渲染的无障碍模式；vim 模式下可配置 jj 之类的插入态重映射序列" },
+            { "feature": "会话内实时耗时计数 + 路径权限规则启动警告（v2.1.210）", "detail": "折叠工具摘要行新增实时计时；Write/NotebookEdit/Glob 权限规则写法有歧义时会在启动时警告" },
+            { "feature": "--forward-subagent-text（v2.1.211）", "detail": "stream-json 输出可携带 subagent 产出的文本内容，便于下游解析" },
+            { "feature": "/fork 支持后台会话 + 新增默认用量上限（v2.1.212）", "detail": "/fork 可把当前对话复制进新的后台会话继续跑；同时新增单 session 默认 200 次 WebSearch / 200 个 subagent 派生上限，超时（>2 分钟）的 MCP 调用自动转后台" },
+            { "feature": "/resume 选择器包含已删除会话（v2.1.212）", "detail": "误删的历史会话现在也能在 /resume 里找回并恢复" }
+          ]
+        },
+        {
+          "tool": "Codex CLI",
+          "versionRange": "v0.144.1 → v0.144.5",
+          "items": [
+            { "feature": "危险命令检测加强（v0.144.5，7/16）", "detail": "识别更多变体的强制 rm 形式，拒绝执行时给出更清晰的原因说明" },
+            { "feature": "Rollout token 预算", "detail": "可为 agent thread 配置 token 用量预算，接近上限提醒，用尽后自动终止当前 turn" },
+            { "feature": "本地 / 远程主机间 thread handoff", "detail": "可将一个 thread 转移到已连接远程主机上的匹配项目继续运行，Codex 可协助完成整个转移过程" },
+            { "feature": "/usage 用量重置额度 + /plugins 分区浏览", "detail": "/usage 可查看并兑换已获得的用量重置额度；/plugins 按 OpenAI 精选 / 工作区 / 与我共享分区展示，命中场景时还会主动推荐插件" }
+          ]
+        },
+        {
+          "tool": "OpenClaw",
+          "versionRange": "2026.7.1-beta.3 → 2026.7.2-beta.1",
+          "items": [
+            { "feature": "2026.7.1 转正式版（7/13）", "detail": "带来 live Tasks 面板、更顺畅的首装到首次对话流程、iOS/Android/macOS 官方 app 大版本更新；接入 GPT-5.6、腾讯混元 Hy3、Meta Muse Spark 1.1；Gateway 崩溃后不再无限重启" },
+            { "feature": "2026.7.2-beta.1（7/15）", "detail": "新增远程 coding session（云端 worker 执行 + 终端会话可续接）；Android 语音唤醒等原生自动化 / mobile node 能力；Telegram 稳定性与 Signal 重连修复；新增 deb / AppImage 的 Linux 打包" }
+          ]
+        }
+      ],
+      "industryNews": {
+        "headline": {
+          "title": "🔥 Kimi K3 — 2.8 万亿参数开源模型（7/16）— 本期重点",
+          "summary": "一句话：Moonshot AI 发布 Kimi K3，2.8 万亿参数的开源 MoE 模型，号称全球最大开放权重模型，多项基准逼近甚至优于 Fable 5 / GPT-5.6 Sol，前端编程盲测中被开发者评为优于两者。",
+          "points": [
+            "架构 — 稀疏 MoE，896 个专家里每次仅激活 16 个（Stable LatentMoE），叠加 Kimi Delta Attention 与 Attention Residuals 两项新架构改动；原生支持视觉输入，1M token 上下文。",
+            "定价 — 缓存命中输入 $0.30/M、未命中输入 $3/M、输出 $15/M，满 1,048,576 token 上下文均按此价，比同级闭源模型便宜不少。",
+            "开放程度 — 已上线 Kimi Code / Kimi App 可直接使用；权重定于 7/27 公开发布，届时将成为全球最大的开放权重模型。",
+            "表现 — Arena 盲测中前端编程一项被开发者评为优于 Fable 5 与 GPT-5.6 Sol；Moonshot 自己也承认部分任务上仍落后这两个模型，但差距很小。"
+          ]
+        },
+        "others": [
+          { "product": "Gemini 3.5 Pro", "org": "Google DeepMind", "date": "7/17", "desc": "为一次架构重做推迟发布；据传带来 200 万 token 上下文和 Deep Think 推理层，但官方尚未正式确认参数与定价，目前信息以第三方爆料为主" },
+          { "product": "Inkling", "org": "Thinking Machines Lab", "date": "7/15", "desc": "Mira Murati 创立的 Thinking Machines 首个自研模型，走开放权重路线，975B 总参数 / 41B 激活参数，支持图文音三模态输入，Artificial Analysis 智能指数以 41 分登顶美国开放权重模型榜首" },
+          { "product": "Fable 5 免费期三度延长至 7/19", "org": "Anthropic", "date": "7/12", "desc": "五周内第三次延长 Pro/Max/Team/高级 Enterprise 用户的 Fable 5 免费用量（周用量上限内 50%），直接应对 GPT-5.6 Sol 的价格压力；同期 Cursor 模型列表短暂出现代号 'Honeycomb' 的未标注模型，规格与 Fable 5 接近但会把敏感请求转发给 Opus 4.8，被猜测是 Opus 5 早期版本，Anthropic 未予置评" }
+        ],
+        "trending": [
+          { "name": "mattpocock/skills", "url": "https://github.com/mattpocock/skills", "desc": "作者把自己日常真实工程场景用的 .claude 目录公开成仓库，2.7 万+ star；重点是 /tdd、/diagnosing-bugs、/improve-codebase-architecture 等强调工程规范而非一次性写代码的 skill，可作为 native plugin 整体安装" },
+          { "name": "openinterpreter/openinterpreter", "url": "https://github.com/openinterpreter/openinterpreter", "desc": "用 Rust 重写的开放模型 coding agent，主打适配 Kimi K3 等开放权重模型，一周新增 660+ star" }
+        ],
+        "trends": [
+          "开放权重模型逼近前沿 — Kimi K3（中国）与 Inkling（美国，Thinking Machines）同一周先后发布，开放权重赛道正从\"追赶\"转向\"贴身竞争\"，且不再是中国实验室独有的打法。",
+          "旗舰模型发布前的信息控制越来越谨慎 — Gemini 3.5 Pro 具体参数仍以爆料为主，Anthropic 对疑似 Opus 5 的 'Honeycomb' 不予置评，头部厂商都在收紧发布前的口径。",
+          "Anthropic 用免费试用应对价格战 — Fable 5 免费期五周内三次延长，直接对冲 GPT-5.6 Sol 的定价压力。"
+        ]
+      },
+      "recommendations": [
+        { "name": "升级 Claude Code 到 v2.1.212", "desc": "留意新增的 WebSearch / subagent 派生默认上限（各 200 次每 session），重度 workflow 用户按需去 /config 调整" },
+        { "name": "试试 mattpocock/skills", "desc": "参考真实工程场景下的 Claude Code skill 写法，比自己从零摸索更快上手 /tdd、/diagnosing-bugs 这类规范型 skill" },
+        { "name": "关注 Kimi K3 公开权重（7/27）", "desc": "对成本敏感、需要前端 / 编程能力的场景可以先关注，权重开放后可自行部署或对比评测" }
+      ],
+      "references": [
+        { "title": "Moonshot AI 发布 Kimi K3（MarkTechPost）", "url": "https://www.marktechpost.com/2026/07/16/moonshot-ai-releases-kimi-k3-a-2-8-trillion-parameter-open-moe-model-with-kimi-delta-attention-and-1m-context/" },
+        { "title": "TechCrunch：Kimi K3 逼近 Opus 4.8", "url": "https://techcrunch.com/2026/07/16/moonshots-upcoming-kimi-3-is-expected-to-close-the-gap-with-anthropics-opus-4-8/" },
+        { "title": "SiliconANGLE：Kimi K3 全球最大开放权重模型", "url": "https://siliconangle.com/2026/07/16/chinas-moonshot-throws-gauntlet-kimi-k3-worlds-largest-open-weights-model/" },
+        { "title": "TechTimes：Gemini 3.5 Pro 架构重做", "url": "https://www.techtimes.com/articles/320308/20260713/gemini-35-pro-targets-july-17-after-full-rebuild-every-spec-remains-unconfirmed.htm" },
+        { "title": "TechCrunch：Thinking Machines 发布 Inkling", "url": "https://techcrunch.com/2026/07/15/thinking-machines-amps-up-its-bet-against-one-size-fits-all-ai-with-its-first-open-model-inkling/" },
+        { "title": "BleepingComputer：Fable 5 免费期延至 7/19", "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/claude-fable-5-stays-free-for-paid-users-until-july-19-as-anthropic-buys-more-time/" },
+        { "title": "TechTimes：疑似 Opus 5 / 'Honeycomb' 泄露", "url": "https://www.techtimes.com/articles/320265/20260712/fable-5-free-through-july-19-anthropic-blinks-again-opus-5-leak-surfaces-cursor.htm" },
+        { "title": "Claude Code Changelog", "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" },
+        { "title": "Codex Changelog", "url": "https://developers.openai.com/codex/changelog" },
+        { "title": "Codex CLI v0.144.5 Release", "url": "https://github.com/openai/codex/releases/tag/rust-v0.144.5" },
+        { "title": "OpenClaw Releases", "url": "https://github.com/openclaw/openclaw/releases" },
+        { "title": "mattpocock/skills（GitHub Trending）", "url": "https://github.com/mattpocock/skills" }
+      ]
+    },
     {
       "date": "2026-07-10",
       "coverage": { "from": "2026-07-03", "to": "2026-07-10" },
