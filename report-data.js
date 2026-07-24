@@ -5,9 +5,98 @@
 // lastReportDate: the `date` of issues[0] (the most recently published issue).
 // The weekly job uses it as the start of the next coverage window.
 window.AI_SALON = {
-  "updatedAt": "2026-07-17",
-  "lastReportDate": "2026-07-17",
+  "updatedAt": "2026-07-24",
+  "lastReportDate": "2026-07-24",
   "issues": [
+    {
+      "date": "2026-07-24",
+      "coverage": { "from": "2026-07-17", "to": "2026-07-24" },
+      "headline": "Gemini 3.6 Flash 发布，Pichai 松口 Gemini 4 已进入预训练",
+      "intro": "本期聚焦工具更新与业界新闻（覆盖区间 7/17 → 7/24）。头条：Google 于 7/21 发布 Gemini 3.6 Flash / 3.5 Flash-Lite / 3.5 Flash Cyber 三款新模型（唯独没有 3.5 Pro），随后 Pichai 在 7/23 财报电话会上回应\"3.5 Pro 跳票\"的质疑，松口 Gemini 4 已进入预训练、未来目标是接近月度的发布节奏。",
+      "note": "⚠️ Claude Code v2.1.217 起新增 subagent 并发上限：单条消息默认最多同时跑 20 个 subagent（CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS 可调），且 subagent 默认不再派生下一层 subagent（需设 CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH 才能加深）——是上期 200 次/session 上限之后的又一次收紧，重度使用 /workflow 大规模 fan-out 的同学升级后注意排查是否被截断。",
+      "toolVersions": {
+        "asOf": "7/24",
+        "rows": [
+          { "tool": "Claude Code (Anthropic)", "version": "v2.1.218", "update": "claude update" },
+          { "tool": "Codex (OpenAI)", "version": "v0.145.0", "update": "npm update -g @openai/codex" },
+          { "tool": "OpenClaw", "version": "2026.7.2-beta.3", "update": "openclaw update" }
+        ]
+      },
+      "toolUpdates": [
+        {
+          "tool": "Claude Code",
+          "versionRange": "v2.1.212 → v2.1.218",
+          "items": [
+            { "feature": "EndConversation 工具（v2.1.214）", "detail": "Claude 现在可以主动结束高度辱骂或越狱尝试类的对话，行为对齐 claude.ai 网页端自 2025 年起的做法" },
+            { "feature": "/verify、/code-review 不再自动触发（v2.1.215）", "detail": "此前 Claude 会在它认为合适的时机自行运行这两个 skill，现在必须显式调用 /verify 或 /code-review 才会执行" },
+            { "feature": "sandbox.filesystem.disabled 新设置（v2.1.216）", "detail": "可在保留网络出站控制的同时跳过文件系统隔离；同版本修复了 worktree 隔离下 subagent 通过 git -C / --git-dir / GIT_DIR 绕开隔离改动共享 checkout 的问题" },
+            { "feature": "subagent 并发上限默认 20 + 默认禁止嵌套派生（v2.1.217）", "detail": "CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS 可调整并发上限，CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH 可放开嵌套深度；同版本新增 emoji shortcode 自动补全（如 :heart: → ❤️）" },
+            { "feature": "/code-review 转为后台 subagent 运行（v2.1.218）", "detail": "review 过程不再占用当前对话上下文；同版本修复了 /context 在 compaction 后汇报过期 token 用量、Bedrock application-inference-profile ARN 计费等一批问题" }
+          ]
+        },
+        {
+          "tool": "Codex CLI",
+          "versionRange": "v0.144.6 → v0.145.0",
+          "items": [
+            { "feature": "修正 GPT-5.6 三档模型的上下文窗口指令（v0.144.6，7/18）", "detail": "此前内置指令未对齐 272,000 token 的真实工作上下文，导致 Sol / Terra / Luna 实际可用上下文被低估" },
+            { "feature": "分页 thread history + multi-agent V2 转正（v0.145.0，7/21）", "detail": "新增支持搜索、恢复、持久化命名、sub-agent、memories 的分页会话历史（experimental）；/import 扩展为可迁移 Cursor / Claude Code 的设置、MCP servers、插件、会话、命令与项目级 memory；新增 Amazon Bedrock 登录 / 自定义 endpoint，Bedrock 默认模型改为 GPT-5.6 Sol；新增音频输入输出与 realtime V3 流式对话；multi-agent V2（可配置 sub-agent 模型、推理档位、并发数、角色）转为正式可用" }
+          ]
+        },
+        {
+          "tool": "OpenClaw",
+          "versionRange": "2026.7.2-beta.1 → 2026.7.2-beta.3",
+          "items": [
+            { "feature": "外部 Gateway 托管模式 + ClickClack 引导式接入（beta.2，7/17）", "detail": "OPENCLAW_SUPERVISOR_MODE=external 支持外部监管 Gateway；新增 ClickClack 渠道引导式配置向导与 skill workshop 审批自动化；内置 Codex CLI 版本升至 0.144.4；修复 Telegram 持久化与 Signal 响应性问题" },
+            { "feature": "远程 coding session + 移动端原生自动化（beta.3，7/18）", "detail": "Control UI 会话可跑在云端 worker 上；Codex / Claude catalog session 可在其所属主机的终端里直接打开，OpenCode / Pi 会话可在终端里续接；Automations 补齐移动端能力，Android 新增前台语音唤醒；新增 Linux deb / AppImage 打包" }
+          ]
+        }
+      ],
+      "industryNews": {
+        "headline": {
+          "title": "🔥 Gemini 3.6 Flash 发布，Pichai 松口 Gemini 4 已进入预训练（7/21-7/23）— 本期重点",
+          "summary": "一句话：Google 7/21 发布 Gemini 3.6 Flash / 3.5 Flash-Lite / 3.5 Flash Cyber 三款新模型但仍无 3.5 Pro；两天后的 Q2 财报电话会上，Pichai 正面回应跳票质疑，透露 Gemini 4 已进入预训练、目标是接近月度的发布节奏。",
+          "points": [
+            "三连发（7/21）— Gemini 3.6 Flash 是主力\"workhorse\"模型，官方称比 3.5 Flash 少产出 17% 的输出 token、多步任务所需推理步数与工具调用更少；3.5 Flash-Lite 主打高吞吐低延迟（agentic search、文档处理、subagent fan-out）；3.5 Flash Cyber 专精漏洞挖掘与修复，仅限政府与受信合作伙伴小范围试点。",
+            "定价与实测收益 — 3.6 Flash 输出价降至 $1.50 / $7.50 per M（较 3.5 Flash 的 $9 输出价降 16.7%）；Artificial Analysis 测得配合 token 产出减少后平均任务成本降 18%，DeepSWE 编程基准上 token 节省最高可达 65%。",
+            "财报电话会交锋（7/23）— 投资人就 3.5 Pro 跳票与 Google 在 AI 竞赛中的位置发问，Pichai 回应\"大家会满意\"的 Gemini 4，称其为\"非常有野心的项目\"，透露已进入预训练、未来目标是把发布节奏拉近到接近月度，并表示需要更大的 Gemini 4 才能在下一个前沿档位保持竞争力。"
+          ]
+        },
+        "others": [
+          { "product": "OpenAI Codex Micro", "org": "OpenAI × Work Louder", "date": "7/15", "desc": "OpenAI 首款自研硬件——$230 机械小键盘，13 键含 6 个可显示 agent 状态的 RGB Agent Key（白/蓝/绿/琥珀/红对应闲置/思考/完成/需要输入/报错），配转轮调 reasoning effort、摇杆映射常用工作流（debug、refactor 等），蓝牙 / USB-C 双连接，仅支持 Windows / macOS，发布即缺货" },
+          { "product": "前沿模型发布审查框架", "org": "白宫 + OpenAI / Anthropic / Google", "date": "7/20", "desc": "三方与白宫商定的自愿框架接近敲定：新旗舰模型公开发布前，联邦机构有最多 30 天窗口评估其国家安全影响；评估用的基准细节保密，Meta 未加入此次协议" },
+          { "product": "Project Perception", "org": "Microsoft", "date": "7/20", "desc": "微软筹备中的 AI 网络安全平台，联合 Microsoft / OpenAI / Anthropic 的模型查找并修复软件漏洞，定位为比 Anthropic Mythos-class 安全方案更低成本的替代品" }
+        ],
+        "trending": [
+          { "name": "ComposioHQ/awesome-claude-skills", "url": "https://github.com/ComposioHQ/awesome-claude-skills", "desc": "Claude skill 精选合集，一周新增 636+ star（现 69.6k+），覆盖各类 AI workflow 定制场景" },
+          { "name": "diegosouzapw/OmniRoute", "url": "https://github.com/diegosouzapw/OmniRoute", "desc": "免费 AI 网关，支持 290+ provider / 500+ 模型，带自动 fallback 与 token 压缩，一周新增 1900+ star（现 27.6k+）" }
+        ],
+        "trends": [
+          "云厂商继续打\"更便宜的主力模型\"牌 — Gemini 3.6 Flash 输出价降 17%、平均任务成本降 18%，呼应本月早些时候 Sonnet 5 / GPT-5.6 Terra 的降本打法，\"够用就好\"档位正成为价格战主战场。",
+          "前沿模型公开发布继续要过政府关卡，且正从个案走向制度化 — 白宫与三家实验室商定的 30 天审查框架接近敲定，此前 Fable 5 / Mythos 5、GPT-5.6 Sol 的出口管制插曲看起来会变成常态流程而非例外。",
+          "AI 硬件外设成为新赛道 — OpenAI 用 Codex Micro 探索\"实体控制面板 + agent 状态可视化\"，coding agent 的交互界面开始从纯终端 / IDE 向物理设备延伸。"
+        ]
+      },
+      "recommendations": [
+        { "name": "评估 Gemini 3.5 Flash-Lite / 3.6 Flash", "desc": "高吞吐、低延迟场景（agentic search、文档处理、subagent fan-out）可以先对比一下这两档新模型的性价比" },
+        { "name": "检查 Claude Code subagent 并发设置", "desc": "v2.1.217 起默认上限 20、且不再默认嵌套派生，重度 /workflow 用户按需调整 CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS / CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH" },
+        { "name": "升级 Codex CLI 到 v0.145.0", "desc": "体验分页 thread history、音频输入输出，以及转正式的 multi-agent V2" }
+      ],
+      "references": [
+        { "title": "TechCrunch：Google 发布三款 Gemini 新模型，唯独没有 3.5 Pro", "url": "https://techcrunch.com/2026/07/21/google-releases-three-new-gemini-models-but-no-3-5-pro/" },
+        { "title": "9to5Google：Gemini 3.6 Flash 发布", "url": "https://9to5google.com/2026/07/21/gemini-3-6-flash-launch/" },
+        { "title": "Google 官方博客：Gemini 3.6 Flash / 3.5 Flash-Lite / 3.5 Flash Cyber", "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/" },
+        { "title": "TechTimes：Gemini 3.6 Flash 降本增效", "url": "https://www.techtimes.com/articles/321268/20260722/gemini-36-flash-cuts-token-costs-scores-higher-every-benchmark.htm" },
+        { "title": "Search Engine Journal：Pichai 称 Google 需要 Gemini 4 才能保持前沿竞争力", "url": "https://www.searchenginejournal.com/pichai-says-google-needs-gemini-4-to-compete-at-the-frontier/583214/" },
+        { "title": "InfoWorld：Gemini 3.5 Pro 跳票，但 Gemini 4 会很强", "url": "https://www.infoworld.com/article/4200818/google-ceo-distracts-from-gemini-3-5-pro-delay-with-talk-of-gemini-4-and-monthly-releases.html" },
+        { "title": "Engadget：OpenAI 发布实体 agent 控制键盘", "url": "https://www.engadget.com/2215952/openai-launches-a-physical-keypad-for-controlling-agents/" },
+        { "title": "gHacks：OpenAI Codex Micro，$230 机械键盘", "url": "https://www.ghacks.net/2026/07/18/openai-launches-codex-micro-a-230-mechanical-keypad-for-ai-coding/" },
+        { "title": "buildfastwithai：AI News Today（7/20，白宫框架 / Project Perception）", "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories" },
+        { "title": "Claude Code Changelog", "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" },
+        { "title": "Codex Changelog", "url": "https://developers.openai.com/codex/changelog" },
+        { "title": "OpenClaw Releases", "url": "https://github.com/openclaw/openclaw/releases" },
+        { "title": "ComposioHQ/awesome-claude-skills（GitHub Trending）", "url": "https://github.com/ComposioHQ/awesome-claude-skills" }
+      ]
+    },
     {
       "date": "2026-07-17",
       "coverage": { "from": "2026-07-10", "to": "2026-07-17" },
