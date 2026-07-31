@@ -5,9 +5,100 @@
 // lastReportDate: the `date` of issues[0] (the most recently published issue).
 // The weekly job uses it as the start of the next coverage window.
 window.AI_SALON = {
-  "updatedAt": "2026-07-24",
-  "lastReportDate": "2026-07-24",
+  "updatedAt": "2026-07-31",
+  "lastReportDate": "2026-07-31",
   "issues": [
+    {
+      "date": "2026-07-31",
+      "coverage": { "from": "2026-07-24", "to": "2026-07-31" },
+      "headline": "Claude Opus 5 发布，1M 上下文、半价打平 Opus 4.8 却反超 Fable 5",
+      "intro": "本期聚焦工具更新与业界新闻（覆盖区间 7/24 → 7/31）。头条：Anthropic 在不到两个月内发布的第四款模型——继 6 月 Mythos 5 / Fable 5 / Sonnet 5 之后，7/24 上线 Claude Opus 5，1M 上下文、定价与 Opus 4.8 持平，但在 12 项共同基准中 7 项反超自家旗舰 Fable 5。",
+      "note": "Claude Code v2.1.219 起 subagent 嵌套深度默认从 1 层放宽到 3 层（CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH=1 可关闭）——是对上上期\"默认不再派生下一层\"限制的部分松绑，重度 /workflow 用户可以重新评估要不要调整这个环境变量。",
+      "toolVersions": {
+        "asOf": "7/31",
+        "rows": [
+          { "tool": "Claude Code (Anthropic)", "version": "v2.1.220", "update": "claude update" },
+          { "tool": "Codex (OpenAI)", "version": "v0.146.0", "update": "npm update -g @openai/codex" },
+          { "tool": "OpenClaw", "version": "2026.7.2-beta.5", "update": "openclaw update" }
+        ]
+      },
+      "toolUpdates": [
+        {
+          "tool": "Claude Code",
+          "versionRange": "v2.1.218 → v2.1.220",
+          "items": [
+            { "feature": "Claude Opus 5 成为默认 Opus 模型（v2.1.219，7/24）", "detail": "1M 上下文，standard 模式 $5/$25 per Mtok（与 Opus 4.8 持平），fast mode $10/$50、速度约 2.5 倍；claude-api skill 同步默认迁移到 Opus 5，并提供从 Opus 4.8 的迁移指引" },
+            { "feature": "subagent 嵌套深度默认放宽到 3 层（v2.1.219）", "detail": "此前默认不再派生下一层（深度 1），现在默认可嵌套到 3 层；CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH=1 可关闭嵌套" },
+            { "feature": "新增 sandbox.network.strictAllowlist 设置（v2.1.219）", "detail": "沙盒命令的非白名单 host 直接拒绝而不再弹权限确认" },
+            { "feature": "新增 DirectoryAdded hook（v2.1.219）", "detail": "/add-dir 或 SDK 的 register_repo_root control request 注册新工作目录后触发" },
+            { "feature": "stream-json 新增嵌套 subagent 转发（v2.1.219）", "detail": "配合 --forward-subagent-text，深度 2+ 的 subagent 产出也会按其上级 Agent tool_use id 归类展示" },
+            { "feature": "v2.1.220（7/24）", "detail": "仅为 bug fixes and reliability improvements，无新增功能说明" }
+          ]
+        },
+        {
+          "tool": "Codex CLI",
+          "versionRange": "v0.145.0 → v0.146.0",
+          "items": [
+            { "feature": "命名会话 + 置顶线程 + 侧对话（v0.146.0，7/29）", "detail": "/new /clear 可为会话命名，可置顶重要线程，支持在不关闭当前对话的情况下切换侧对话" },
+            { "feature": "Agent Plugins + 工作区插件发布（v0.146.0）", "detail": "新增 plugin manifest 支持、workspace 插件发布，以及新的插件 marketplace（含 Amazon Bedrock、Claude Code）" },
+            { "feature": "Thread forking 支持分页历史（v0.146.0）", "detail": "可从指定 turn fork 出临时分支（不出现在线程列表中）；app-server 客户端可查看环境、列出子线程" }
+          ]
+        },
+        {
+          "tool": "OpenClaw",
+          "versionRange": "2026.7.2-beta.3 → 2026.7.2-beta.5",
+          "items": [
+            { "feature": "会话 Rewind + 分支（beta.4/beta.5）", "detail": "可从任意历史消息 fork 出会话分支，并在不同 transcript 分支间切换" },
+            { "feature": "交互式 MCP Apps（beta.5）", "detail": "可托管带绑定 tool / resource 的 ticketed MCP 应用" },
+            { "feature": "Questions & Approvals 结构化问答（beta.5）", "detail": "agent 可在 web 与移动端发起带选项卡片的结构化提问和审批请求" },
+            { "feature": "会议与实时通话集成（beta.5）", "detail": "接入 Teams / Zoom / Google Meet 转录采集，新增 OpenAI、Gemini 的视频通话支持" },
+            { "feature": "状态安全与恢复（beta.5）", "detail": "quarantine store 抵御主数据库损坏、crash-recoverable SQLite 快照，以及跨 gateway 重启的可靠投递（覆盖 Telegram / Signal / Slack / QQBot / Twitch 等渠道）" },
+            { "feature": "Wear OS 伴侣 App + 支持 Claude Opus 5（beta.5）", "detail": "手机代理的智能手表支持，可选择 agent、控制音频播放" }
+          ]
+        }
+      ],
+      "industryNews": {
+        "headline": {
+          "title": "🔥 Claude Opus 5 发布：1M 上下文、半价打平 Opus 4.8 却反超 Fable 5（7/24）— 本期重点",
+          "summary": "Anthropic 不到两个月内发布的第四款模型——继 6 月 Mythos 5 / Fable 5 / Sonnet 5 之后，7/24 上线 Claude Opus 5：1M 上下文，定价与 Opus 4.8 持平（standard $5/$25 per Mtok），fast mode $10/$50、速度约 2.5 倍，新增 low/medium/high 三档 effort 可调。",
+          "points": [
+            "跑分反超自家旗舰 — 在 12 项共同基准中 7 项反超 Fable 5，其中 Frontier-Bench v0.1（真实多文件工程任务）以 43.3% 对 Fable 5 的 33.7% 拉开 9.6 个百分点；ARC-AGI-3 上拿到 30.2%，是第二名的三倍。",
+            "价格不变、性能却提升 — 与 Opus 4.8 同价（$5/$25），却是 Fable 5 输入价的一半，呼应本月早些时候 Gemini 3.6 Flash 的降本打法，\"次旗舰更划算\"正成为新常态。",
+            "全平台默认切换 — Claude Code v2.1.219 起默认 Opus 模型即为 Opus 5，claude-api skill 同步默认迁移；Claude Max 默认模型；Claude Desktop app（v1.24012.9，7/24）新增五档 effort 选择器，Opus 5 上 Extended thinking 常开。",
+            "业界反应 — Cognition（Devin 团队）CEO Scott Wu 在 FrontierCode 1.1 上确认 Opus 5\"以旗舰一半成本逼近 Fable 级性能\"，尤其在调试与根因分析上表现突出。"
+          ]
+        },
+        "others": [
+          { "product": "Kimi K3 开放权重正式放出", "org": "Moonshot AI", "date": "7/26", "desc": "2.8 万亿参数完整权重（MXFP4 量化约 594GB、96 个分片）在 Hugging Face 免费开放下载，比原定的 7/27 提前一天；相较上期报道的\"模型发布\"，这周才是真正可自托管的权重落地（至少需 8×H100 80GB 起步的多卡硬件），Together AI / Modal 同步提供 day-0 云端托管" },
+          { "product": "Claude Desktop app v1.24012.9", "org": "Anthropic", "date": "7/24", "desc": "新增 Opus 5 五档 effort 选择器（Extended thinking 常开）；新增 mcpPersistentAlwaysAllowEnabled 管理员配置项，可关闭 MCP 工具\"永久允许\"的持久化授权；修复 Windows 上插件 hook 静默失效的问题" }
+        ],
+        "trending": [
+          { "name": "ogulcancelik/herdr", "url": "https://github.com/ogulcancelik/herdr", "desc": "Rust 编写的终端 agent multiplexer，可在同一终端里并行监控/操作 Claude Code、Codex、Devin 等多个 coding agent，7 月内从数千星涨到 19k+" }
+        ],
+        "trends": [
+          "\"次旗舰更划算\"从个例变成模式 — 继上期 Gemini 3.6 Flash 降本增效后，本周 Opus 5 价格不变却反超自家旗舰 Fable 5，价格战正在往\"次旗舰即最优选\"方向收敛。",
+          "Agent 多开/编排类终端工具持续吸金 — herdr 延续了 orca、gstack 等\"agent 舰队\"工具今年以来的热度，说明重心正从\"调好一个 agent\"转向\"同时管理一批 agent\"。"
+        ]
+      },
+      "recommendations": [
+        { "name": "评估切换到 Claude Opus 5", "desc": "与 Opus 4.8 同价但多项基准反超 Fable 5，重度使用 Opus 档位的场景值得先跑一轮内部基准对比" },
+        { "name": "升级 Claude Code 到 v2.1.220", "desc": "获取 Opus 5 默认模型、放宽到 3 层的 subagent 嵌套深度，以及 sandbox.network.strictAllowlist 等新设置" },
+        { "name": "升级 Codex CLI 到 v0.146.0", "desc": "体验命名会话、置顶线程、Agent Plugins，以及支持分页历史的 thread forking" }
+      ],
+      "references": [
+        { "title": "Anthropic 官方博客：Introducing Claude Opus 5", "url": "https://www.anthropic.com/news/claude-opus-5" },
+        { "title": "TechCrunch：Anthropic launches Opus 5", "url": "https://techcrunch.com/2026/07/24/anthropic-launches-opus-5/" },
+        { "title": "Decrypt：Claude Opus 5 Outscores Fable 5 on Most Benchmarks—At Half the Price", "url": "https://decrypt.co/374305/claude-opus-5-outscores-fable-5-most-benchmarks-half-price" },
+        { "title": "TechTimes：Kimi K3 open weights arrive, self-hosting cuts data risk", "url": "https://www.techtimes.com/articles/321551/20260725/kimi-k3-open-weights-arrive-sunday-self-hosting-cuts-china-data-risk-api-never-can.htm" },
+        { "title": "Quartz：Moonshot AI releases Kimi K3 open-weight model for download", "url": "https://qz.com/moonshot-ai-kimi-k3-open-weights-download-072726" },
+        { "title": "Claude Code Changelog", "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" },
+        { "title": "Codex Changelog", "url": "https://developers.openai.com/codex/changelog" },
+        { "title": "openai/codex Release v0.146.0", "url": "https://github.com/openai/codex/releases/tag/rust-v0.146.0" },
+        { "title": "OpenClaw Releases", "url": "https://github.com/openclaw/openclaw/releases" },
+        { "title": "Claude Desktop app release notes", "url": "https://support.claude.com/en/articles/12138966-release-notes" },
+        { "title": "ogulcancelik/herdr（GitHub Trending）", "url": "https://github.com/ogulcancelik/herdr" }
+      ]
+    },
     {
       "date": "2026-07-24",
       "coverage": { "from": "2026-07-17", "to": "2026-07-24" },
