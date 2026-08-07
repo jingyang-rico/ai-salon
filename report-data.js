@@ -5,9 +5,94 @@
 // lastReportDate: the `date` of issues[0] (the most recently published issue).
 // The weekly job uses it as the start of the next coverage window.
 window.AI_SALON = {
-  "updatedAt": "2026-07-31",
-  "lastReportDate": "2026-07-31",
+  "updatedAt": "2026-08-07",
+  "lastReportDate": "2026-08-07",
   "issues": [
+    {
+      "date": "2026-08-07",
+      "coverage": { "from": "2026-07-31", "to": "2026-08-07" },
+      "headline": "Alibaba 发布 Qwen3.8-Max，2.4 万亿参数视觉跑分仅次于 Fable 5，价格约为 Opus 5 的三分之一",
+      "intro": "本期聚焦工具更新与业界新闻（覆盖区间 7/31 → 8/7）。头条：Alibaba 8/3 发布 Qwen3.8-Max——2.4 万亿参数 MoE 模型（950 亿激活参数），Arena.AI 视觉榜全球排名第二（仅次于 Fable 5），价格约为 Claude Opus 5 的四分之一到三分之一，开放权重计划下周随更小尺寸的 Qwen3.8-27B 一并放出。",
+      "note": "⚠️ Claude Code v2.1.221/222/223 三个版本连续修复了多个权限/沙盒绕过漏洞（zsh 正则条件绕过 Bash 权限检查、tab/不可见 Unicode 填充绕过权限提示、workflow 脚本用动态 import() 逃逸沙盒、worktree 隔离 session/subagent 对主 checkout 执行破坏性 git 操作等），安全敏感环境建议尽快升级到 v2.1.224。",
+      "toolVersions": {
+        "asOf": "8/7",
+        "rows": [
+          { "tool": "Claude Code (Anthropic)", "version": "v2.1.224", "update": "claude update" },
+          { "tool": "Codex (OpenAI)", "version": "v0.147.0", "update": "npm update -g @openai/codex" },
+          { "tool": "OpenClaw", "version": "2026.7.2-beta.7", "update": "openclaw update" }
+        ]
+      },
+      "toolUpdates": [
+        {
+          "tool": "Claude Code",
+          "versionRange": "v2.1.220 → v2.1.224",
+          "items": [
+            { "feature": "v2.1.221（8/4）", "detail": "新增 Focus view 快捷键 Ctrl+Alt+F（隐藏工具活动，只看逐轮摘要）、sandbox 凭据文件新增 mask 模式（Linux/WSL）、claude-api skill 新增 prompt-audit 子命令；修复 zsh 正则条件 [[ ]] 绕过 Bash 权限检查、PowerShell 带引号路径权限检查漏洞；background session 现在会自动 commit/push 并开草稿 PR" },
+            { "feature": "v2.1.222（8/4）", "detail": "修复 worktree 隔离 session/subagent 对主 checkout 执行破坏性 git 操作的问题、修复后台任务中 PreToolUse hook 可被绕过限制工具的问题，以及 /usage-credits、/usage 计费展示等一批修复" },
+            { "feature": "v2.1.223（8/6）", "detail": "marketplace 管理新增 owner 通配符（\"owner/*\"）、新增 /teleport 提示继续本地 session；修复 Bash 权限绕过（构造命令隐藏检查）、权限提示可被 tab/不可见 Unicode 填充绕过、workflow 脚本用动态 import() 逃逸沙盒等多个安全漏洞；/review 现为 /code-review 的别名，支持指定 effort" },
+            { "feature": "v2.1.224（8/7）", "detail": "Team/Enterprise 新增 claude self-hosted-runner 自托管环境；插件源支持从带 SHA-256 校验的 HTTPS zip 安装；新增跨 session 消息能力 SendMessage 与 agent 发现工具 ListAgents（macOS/Linux）；移除 200-subagent-per-session 派生上限（并发/深度限制仍保留）；sandbox 凭据脱敏新增 JWT 感知脱敏与 AWS SigV4 重签名" }
+          ]
+        },
+        {
+          "tool": "Codex CLI",
+          "versionRange": "v0.146.0 → v0.147.0",
+          "items": [
+            { "feature": "v0.146.1（8/5）", "detail": "为具备网络安全能力的模型加固自动 review 默认策略，并改进终端界面权限说明文案" },
+            { "feature": "v0.147.0（8/7）", "detail": "支持跨 local/personal/workspace/remote 目录安装与管理 Agent Plugins；新增可手动排序的持久化会话分区与长对话增量浏览；新增 --approve-for-me 自动批准 CLI flag；支持导入 Cursor 管理的 skill 并与已导入的 Claude / Cursor 会话保持同步（不产生重复）；支持 MCP 2026-07-28 协议（分页发现、多轮请求、非阻塞式 server 启动）；Amazon Bedrock 新增带缓存的 web search 与远程会话压缩；修复回放历史中密钥/bearer token 未脱敏、焦点恢复及 MCP 初始化时终端输入丢失等问题；移除已废弃的 codex exec --full-auto flag" }
+          ]
+        },
+        {
+          "tool": "OpenClaw",
+          "versionRange": "2026.7.2-beta.5 → 2026.7.2-beta.7（另有稳定分支 2026.7.1-1/-2 补丁）",
+          "items": [
+            { "feature": "2026.7.2-beta.6（8/1）/ beta.7（8/2）", "detail": "延续上期的数据安全与消息可靠性主线：crash-recoverable SQLite 快照、跨重启的可靠频道投递、会话 Rewind/分支、带 dashboard 的交互式 MCP Apps，以及跨平台结构化 Questions & Approvals" },
+            { "feature": "稳定分支 2026.7.1-1 / 2026.7.1-2（8/4）", "detail": "补丁版本：修复 Codex 进度回复导致 app-server turn 提前终止、Memory Core 启动时 legacy-index 与缓存冲突导致 Gateway 反复重启、WSL 只读文件系统权限报错、旧版本迁移残留导致启动失败、npm 官方插件更新因过期 lock 元数据卡住等问题" }
+          ]
+        }
+      ],
+      "industryNews": {
+        "headline": {
+          "title": "🔥 Alibaba 发布 Qwen3.8-Max：2.4 万亿参数、视觉跑分仅次于 Fable 5，价格约为 Opus 5 的三分之一（8/3）— 本期重点",
+          "summary": "Alibaba 8/3 发布其迄今最大模型 Qwen3.8-Max——2.4 万亿参数 MoE（950 亿激活参数），支持文本/图像/视频输入及百万级 token 上下文，通过 QwenCloud 提供 API；开放权重计划于下周（8/10 当周）连同更小尺寸的 Qwen3.8-27B 一并放出，是阿里巴巴首次在这一参数量级开源模型。",
+          "points": [
+            "定价优势明显 — $2/$6 per Mtok（输入/输出），另有 $0.25/Mtok 的隐式缓存价，合计成本不到 Claude Opus 5（标准档合计约 $30）的三分之一，也明显低于 GPT-5.6 Sol 标准档的 $35。",
+            "Arena.AI 排名喜忧参半 — 视觉榜以 1305 分排名全球第二，仅次于 Fable 5 的 1318 分，是当前视觉能力最强的中国模型；文本榜则排第五，落后于 Fable 5 及三个 Claude Opus 变体。",
+            "基准测试互有胜负 — OSWorld-Verified 上以 86.1 分反超 Fable 5 的 85.0，但 SWE-bench Pro（67.7 对 80.0）与 HLE（43.6 对 53.3）仍明显落后；且目前所有分数均为阿里巴巴自测，Frontier-Bench 等第三方复核尚未跟进。",
+            "同期 OpenAI 用数学证明预告下一代模型 — 8/1 OpenAI 公开内部版本 Astra 解出的 10 道数学 / 理论计算机科学开放难题（含首个非 sofic 群的显式构造），随附零 \"sorry\" 的 Lean 4 形式化证明，生成全部证明按 Sol API 价格估算约耗资 $2000。"
+          ]
+        },
+        "others": [
+          { "product": "Claude Desktop app v1.25927.0", "org": "Anthropic", "date": "8/4", "desc": "输入框麦克风按钮旁新增切换听写/语音模式的箭头；修复 ⌘K/Ctrl+K 搜索遗漏工具输出与已归档 session 的结果、macOS 系统语言为德/西/法/印地/印尼/意/日/韩时 passkey 与 Touch ID 弹窗崩溃、自动或菜单触发的更新重启会打断进行中的 Claude Code 或 Cowork 任务等问题；启动失败时不再留下空白不可用窗口，改为弹错误对话框并记录日志" }
+        ],
+        "trending": [
+          { "name": "esengine/DeepSeek-Reasonix", "url": "https://github.com/esengine/DeepSeek-Reasonix", "desc": "DeepSeek 原生的终端 coding agent，围绕 prefix-cache 稳定性设计、可长时间挂起会话；单一静态 Go 二进制，提供 CLI/TUI、桌面 App、VS Code 插件多种形态，现已 32.6k+ star / 2.1k+ fork" }
+        ],
+        "trends": [
+          "中国大模型跑分持续逼近前沿，价格战从美国厂商内部蔓延到中美之间 — 继上上期 Kimi K3 开源权重放出后，Qwen3.8-Max 视觉能力已逼近全球第一梯队，价格却只有 Opus 5 的三分之一，呼应本月早些时候 Opus 5 反超自家旗舰 Fable 5 的\"次旗舰更划算\"趋势。",
+          "coding agent 终端工具继续按模型厂商生态分化 — DeepSeek-Reasonix 主打围绕 DeepSeek 模型的 prefix-cache 长会话稳定性，是继 Kimi K3 相关工具之后又一个绑定特定模型厂商的终端 agent。"
+        ]
+      },
+      "recommendations": [
+        { "name": "升级 Claude Code 到 v2.1.224", "desc": "修复此前三个版本积累的多个权限/沙盒绕过漏洞，同时获得 SendMessage/ListAgents 跨 session 消息能力与移除的 200-subagent 上限" },
+        { "name": "升级 Codex CLI 到 v0.147.0", "desc": "体验跨目录 Agent Plugins 安装、持久化会话分区、--approve-for-me 自动批准，以及从 Cursor/Claude 会话导入并同步 skill" },
+        { "name": "关注 Qwen3.8-Max 开放权重（预计 8/10 当周）", "desc": "需要低成本、可自托管的高视觉能力选项时值得先看开源权重与配套的 Qwen3.8-27B 小尺寸 checkpoint" }
+      ],
+      "references": [
+        { "title": "Bloomberg：Alibaba drops another China AI model with breakthrough performance", "url": "https://www.bloomberg.com/news/articles/2026-08-03/alibaba-drops-another-china-ai-model-with-breakthrough-performance" },
+        { "title": "MarkTechPost：Alibaba Qwen Releases Qwen3.8-Max", "url": "https://www.marktechpost.com/2026/08/03/alibaba-qwen-releases-qwen3-8-max/" },
+        { "title": "Forbes：Alibaba's Qwen3.8-Max Prices Frontier AI At $2 Per Million Tokens", "url": "https://www.forbes.com/sites/jonmarkman/2026/08/05/alibabas-qwen38-max-prices-frontier-ai-at-2-per-million-tokens/" },
+        { "title": "TheNextWeb：Alibaba unveils Qwen3.8-Max, its most capable model, closing on Moonshot in size", "url": "https://thenextweb.com/news/alibaba-qwen38-max-most-capable-model" },
+        { "title": "TechTimes：OpenAI's Astra Solves Ten Decade-Old Math Problems With Machine-Checkable Lean Proofs", "url": "https://www.techtimes.com/articles/322710/20260802/openais-astra-solves-ten-decade-old-math-problems-machine-checkable-lean-proofs.htm" },
+        { "title": "Forbes：OpenAI's Astra Solved Decades-Old Math Problems For $2,000", "url": "https://www.forbes.com/sites/jonmarkman/2026/08/03/openais-astra-solved-10-decades-old-math-problems-for-just-2000/" },
+        { "title": "Claude Code Changelog", "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" },
+        { "title": "Claude Code Releases", "url": "https://github.com/anthropics/claude-code/releases" },
+        { "title": "Codex Changelog", "url": "https://developers.openai.com/codex/changelog" },
+        { "title": "openai/codex Release v0.147.0", "url": "https://github.com/openai/codex/releases/tag/rust-v0.147.0" },
+        { "title": "OpenClaw Releases", "url": "https://github.com/openclaw/openclaw/releases" },
+        { "title": "Claude Desktop app release notes", "url": "https://support.claude.com/en/articles/12138966-release-notes" },
+        { "title": "esengine/DeepSeek-Reasonix（GitHub Trending）", "url": "https://github.com/esengine/DeepSeek-Reasonix" }
+      ]
+    },
     {
       "date": "2026-07-31",
       "coverage": { "from": "2026-07-24", "to": "2026-07-31" },
