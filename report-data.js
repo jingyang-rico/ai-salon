@@ -5,9 +5,102 @@
 // lastReportDate: the `date` of issues[0] (the most recently published issue).
 // The weekly job uses it as the start of the next coverage window.
 window.AI_SALON = {
-  "updatedAt": "2026-08-07",
-  "lastReportDate": "2026-08-07",
+  "updatedAt": "2026-08-14",
+  "lastReportDate": "2026-08-14",
   "issues": [
+    {
+      "date": "2026-08-14",
+      "coverage": { "from": "2026-08-07", "to": "2026-08-14" },
+      "headline": "Google Gemini App 月活突破 10 亿，Pichai 称是史上增速最快产品",
+      "intro": "本期聚焦工具更新与业界新闻（覆盖区间 8/7 → 8/14）。头条：Google Gemini App 8/11 宣布月活跃用户（MAU）突破 10 亿——距 Q2 财报披露的 9.5 亿仅隔不到一个月，是 Google 史上增速最快的产品，也追近 6 月已率先破 10 亿的 ChatGPT。",
+      "note": "⚠️ Claude Code v2.1.232（8/13）再次修复 PowerShell 权限绕过、Git Bash 符号链接漏洞、嵌套仓库信任问题等安全缺陷——是连续第三周出现权限/沙盒绕过修复，安全敏感环境建议保持紧跟最新版本。",
+      "toolVersions": {
+        "asOf": "8/14",
+        "rows": [
+          { "tool": "Claude Code (Anthropic)", "version": "v2.1.232", "update": "claude update" },
+          { "tool": "Codex (OpenAI)", "version": "v0.147.0", "update": "npm update -g @openai/codex" },
+          { "tool": "OpenClaw", "version": "2026.6.34", "update": "openclaw update" }
+        ]
+      },
+      "toolUpdates": [
+        {
+          "tool": "Claude Code",
+          "versionRange": "v2.1.224 → v2.1.232",
+          "items": [
+            { "feature": "v2.1.225（8/8）", "detail": "新增 gateway spend-limit 支出上限支持、claude agents 新增工作区信任提示；修复无头 session 中长期 OAuth token 被替换导致的瞬时 401 错误" },
+            { "feature": "v2.1.227（8/10）", "detail": "恢复此前失效的按订阅档位评估 feature flag 的逻辑、修复 claude-code-action 下 Bash 命令失败的问题；斜杠命令菜单新增加粗匹配字符提示" },
+            { "feature": "v2.1.228（8/11）", "detail": "修复交互式 session 重绘失败、Windows 上 Git/Git Bash 探测失败、跨 session 消息初始化问题；同时修复 Remote Control 恢复问题与影响项目 memory 文件夹的 session 清理缺陷" },
+            { "feature": "v2.1.229（8/12）", "detail": "新增 Remote Control session 恢复文档、服务端下发的 hooks、长时间 thinking 期间的 SSE keepalive；plugin marketplace 新增命令来源、改进 ListAgents 输出；修复一批崩溃问题" },
+            { "feature": "v2.1.231 / v2.1.232（8/13）", "detail": "v2.1.231 修复预注册 OAuth client 的 MCP server 因 redirect URI 不匹配导致的登录失败；v2.1.232 默认开启 subagent forking（完整继承对话上下文）、新增基于 SendMessage 的跨 session @ 提及消息、plugin marketplace 支持 GitLab，同时修复 PowerShell 权限绕过、Git Bash 符号链接漏洞、嵌套仓库信任问题等安全缺陷，并改进全屏流式响应速度与 MCP 连接超时处理" }
+          ]
+        },
+        {
+          "tool": "Codex CLI",
+          "versionRange": "v0.147.0（稳定版本周未变，0.148.0-alpha.6 → alpha.15 持续迭代中）",
+          "items": [
+            { "feature": "0.148.0-alpha 系列（8/10-8/14）", "detail": "GitHub 上已发布到 rust-v0.148.0-alpha.15，尚未附带正式 changelog 说明；npm 稳定 tag 仍固定在 v0.147.0，具体新特性待转正式版后再确认" }
+          ]
+        },
+        {
+          "tool": "OpenClaw",
+          "versionRange": "beta 分支本周无新版本（仍为 2026.7.2-beta.7）；扩展稳定分支新发 2026.6.34（8/8）",
+          "items": [
+            { "feature": "2026.6.34（8/8，扩展稳定分支）", "detail": "安全加固：browser 路由沙盒化、可信 DNS 目标、自定义 browser origin 与 loopback provider 端点收紧；可靠性提升：session 写入保留、provider fallback、stream 进度处理与 stdio 失败可恢复；Discord gateway 处理增强（待处理 channel 任务可恢复、幂等确认、突发流量限流）；诊断安全（命令/状态面板仅限所有者操作、账号 URL 不再泄露凭据）；本地运行时改进（SQLite checkpoint、workspace 读取、gateway 进程信号、插件 HTTP 响应与依赖处理），共合并 25 个 PR" }
+          ]
+        }
+      ],
+      "industryNews": {
+        "headline": {
+          "title": "🔥 Google Gemini App 月活突破 10 亿，Pichai 称是史上增速最快产品（8/11）— 本期重点",
+          "summary": "Google CEO Sundar Pichai 8/11 在 X 上宣布 Gemini App 月活跃用户正式突破 10 亿——距 Q2 财报披露的 9.5 亿仅隔不到一个月，是 Google 史上增速最快的产品，也是第 14 款突破 10 亿用户量级的 Google 产品，追近 6 月已率先破 10 亿的 ChatGPT。",
+          "points": [
+            "使用行为数据首次披露 — 63% 的用户通过语音与 Gemini 交互；五分之一的 Gemini Live 会话涉及摄像头或屏幕共享而非纯语音；App 每天生成超过 1.5 亿张图片。",
+            "增速对比 ChatGPT — ChatGPT 已于 6 月率先突破 10 亿 MAU，Gemini 这次追赶把两家头部助手 App 的用户规模差距进一步收窄。",
+            "同步透露下一步动作 — Google 同期宣布 Gemini Notebooks 支持完整复制（含全部素材与 artifact）另存为个人副本；新一代 Gemini 3.5 Flash 定位强化编程与自主 agent 任务能力。",
+            "呼应上期 Pichai 对 Gemini 4 的预告 — 结合上期财报电话会透露的\"已进入预训练\"，本周的用户规模里程碑进一步凸显 Google 在保持分发优势的同时，仍需要 Gemini 4 才能在前沿模型竞赛中站稳脚跟。"
+          ]
+        },
+        "others": [
+          { "product": "Grok 4.6", "org": "SpaceXAI（原 xAI，已并入 SpaceX）", "date": "8/12", "desc": "距 Grok 4.5 发布仅 5 周；Artificial Analysis 智能指数 61 分，追平 GPT-5.6 Sol、距 Claude Fable 5（62 分）仅一步之差；DeepSWE（54→65.9）与 APEX-Agents（47.1→57.5）较 4.5 大幅提升；定价维持 $2/$6 per Mtok 不变（200K 长上下文档位翻倍至 $4/$12），已接入 Cursor、Grok Build、API、OpenRouter、Vercel、Cloudflare" },
+          { "product": "DeepSeek-V4-Pro-0813 正式版 + API 大幅调价", "org": "DeepSeek", "date": "8/13", "desc": "1.6T 参数 MoE（约 490 亿激活参数）、100 万 token 上下文、最高 38.4 万 token 输出，主打 agent 能力（Terminal-Bench 2.1 87.9、DeepSWE 62.7）；同时宣布 8/17 起对 V4-Pro / V4-Flash 引入峰谷分时定价，部分档位较现价上涨最高约 1100%（如 V4-Flash 输出价从平价 $0.28/M 涨至峰时 $1.32/M），官方解释为算力紧张下\"更合理分配资源\"" },
+          { "product": "GPT-5.6-Cyber + Daybreak 项目扩容为 Blue/Red 双层级", "org": "OpenAI", "date": "8/10", "desc": "首款专为攻防安全场景训练的模型，内部\"高级网络安全任务完成率\"评测达 95.0%（GPT-5.6 Sol 仅 1.5%）；已用其在 Chrome V8 引擎中发现两个此前未知漏洞（Google 已修复为 CVE-2026-15903）；仅通过需身份核验与用途审批的 Daybreak Red 层级开放，9/1 起 Blue/Red 两层级均强制启用硬件安全密钥" },
+          { "product": "Claude Desktop app v1.28929.0", "org": "Anthropic", "date": "8/11", "desc": "macOS 新增标准全屏快捷键与「进入/退出全屏」菜单项；修复 macOS 内置终端控制其他 App 时误报 -1743 错误而非弹出 Automation 权限提示、部分 Linux 系统（尤其打包/容器化安装）启动缺失托盘图标且每次系统主题切换都复现的问题、macOS 登录反复提示\"Failed to login, it may have been cancelled\"（现改为在系统登录弹窗不可用时自动打开默认浏览器完成登录）" }
+        ],
+        "trending": [
+          { "name": "PrimeIntellect-ai/prime-agent", "url": "https://github.com/PrimeIntellect-ai/prime-agent", "desc": "Prime Intellect 8/5 开源的\"自我改进型\"RLM（Recursive Language Model）coding agent，把 context 当变量、subagent 当函数调用，运行在持久化 IPython kernel 里；配合 Opus 5 在 ARC-AGI-3 上跑到 95.5%、超过官方给出的人类专家基线；本周新增 1.2 万+ star（现 1.56 万+），登上 GitHub Trending 周榜第一" }
+        ],
+        "trends": [
+          "头部 AI 助手 App 的用户规模竞赛进入十亿俱乐部次轮较量 — Gemini App 用不到一个月从 9.5 亿冲到 10 亿，追近 6 月已破 10 亿的 ChatGPT，分发规模正成为和跑分同等重要的竞争维度。",
+          "\"前沿平价\"继续扩容至第三家 — 继 Alibaba Qwen3.8-Max、Claude Opus 5 之后，本周 SpaceXAI Grok 4.6 智能指数追平 GPT-5.6 Sol、逼近 Claude Fable 5，价格维持不变，说明贴身追赶头部模型的厂商已经不止一家。",
+          "中国大模型厂商开始为算力紧张\"涨价\"而非\"降价\" — 与本月早些时候 Qwen3.8-Max 打价格战的叙事相反，DeepSeek 这次因需求超出算力而对 V4 系列引入峰谷分时定价、部分档位涨幅超 10 倍，是今年少见的\"提价\"信号。",
+          "安全定向模型与分级访问成为新产品形态 — OpenAI GPT-5.6-Cyber 用 Daybreak Blue/Red 双层级 + 强制硬件密钥的方式管控攻防能力模型的访问，呼应了近期多家厂商在\"能力越强、访问越严\"上的共同思路。"
+        ]
+      },
+      "recommendations": [
+        { "name": "留意 Claude Code v2.1.232 的安全修复", "desc": "本周再次修复 PowerShell 权限绕过、Git Bash 符号链接漏洞等问题，延迟升级的用户建议尽快执行 claude update" },
+        { "name": "评估 Grok 4.6 作为长任务 agent 的备选", "desc": "定价不变、智能指数追平 GPT-5.6 Sol，在 Cursor / Grok Build / API 均已可用，适合作为多模型对比的场景之一" },
+        { "name": "使用 DeepSeek V4 系列的团队提前规划分时调用", "desc": "8/17 起峰谷分时定价生效、部分价位涨幅显著，批量任务可考虑迁移到北京时间 09:00-12:00 / 14:00-18:00 峰时之外的谷时段执行以控制成本" }
+      ],
+      "references": [
+        { "title": "Google 官方博客：Gemini app 突破 10 亿月活用户", "url": "https://blog.google/innovation-and-ai/products/gemini-app/one-billion-monthly-users/" },
+        { "title": "TechCrunch：Google's Gemini app surges to one billion users", "url": "https://techcrunch.com/2026/08/11/googles-gemini-app-surges-to-one-billion-users/" },
+        { "title": "9to5Google：Gemini app hits 1 billion monthly users, Google teases what's next", "url": "https://9to5google.com/2026/08/11/gemini-app-1-billion/" },
+        { "title": "Forbes：Gemini Becomes Google's Fastest-Growing Product Ever After Hitting 1 Billion Monthly Users", "url": "https://www.forbes.com/sites/antoniopequenoiv/2026/08/11/gemini-becomes-googles-fastest-growing-product-ever-after-hitting-1-billion-monthly-users/" },
+        { "title": "VentureBeat：SpaceXAI debuts Grok 4.6, overtaking Kimi K3's performance and matching GPT-5.6 Sol", "url": "https://venturebeat.com/technology/spacexai-debuts-grok-4-6-overtaking-kimi-k3s-performance-and-matching-gpt-5-6-sol-for-worlds-third-best-on-artificial-analysis" },
+        { "title": "Unite.AI：SpaceXAI Launches Grok 4.6 for Long-Running Agents", "url": "https://www.unite.ai/spacexai-launches-grok-4-6-for-long-running-agents/" },
+        { "title": "InfoWorld：DeepSeek raises some V4 prices by more than 10x as AI demand strains capacity", "url": "https://www.infoworld.com/article/4209439/deepseek-raises-some-v4-prices-by-more-than-10x-as-ai-demand-strains-capacity.html" },
+        { "title": "Unite.AI：DeepSeek Ships V4 Pro as Its Flagship Model Leaves Preview", "url": "https://www.unite.ai/deepseek-ships-v4-pro-as-its-flagship-model-leaves-preview/" },
+        { "title": "datanorth.ai：OpenAI launches GPT-5.6-Cyber via Daybreak Red", "url": "https://datanorth.ai/news/openai-launches-gpt-5-6-cyber" },
+        { "title": "MarkTechPost：Prime Intellect Releases Prime Agent", "url": "https://www.marktechpost.com/2026/08/06/prime-intellect-releases-prime-agent/" },
+        { "title": "Claude Code Changelog", "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" },
+        { "title": "Claude Code Releases", "url": "https://github.com/anthropics/claude-code/releases" },
+        { "title": "Codex Changelog", "url": "https://developers.openai.com/codex/changelog" },
+        { "title": "openai/codex Releases", "url": "https://github.com/openai/codex/releases" },
+        { "title": "OpenClaw Releases", "url": "https://github.com/openclaw/openclaw/releases" },
+        { "title": "Claude Desktop app release notes", "url": "https://support.claude.com/en/articles/12138966-release-notes" },
+        { "title": "PrimeIntellect-ai/prime-agent（GitHub Trending）", "url": "https://github.com/PrimeIntellect-ai/prime-agent" }
+      ]
+    },
     {
       "date": "2026-08-07",
       "coverage": { "from": "2026-07-31", "to": "2026-08-07" },
