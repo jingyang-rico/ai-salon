@@ -5,9 +5,101 @@
 // lastReportDate: the `date` of issues[0] (the most recently published issue).
 // The weekly job uses it as the start of the next coverage window.
 window.AI_SALON = {
-  "updatedAt": "2026-08-14",
-  "lastReportDate": "2026-08-14",
+  "updatedAt": "2026-08-21",
+  "lastReportDate": "2026-08-21",
   "issues": [
+    {
+      "date": "2026-08-21",
+      "coverage": { "from": "2026-08-14", "to": "2026-08-21" },
+      "headline": "Z.ai GLM-5.3 上线即用自身能力揪出 Cursor 真实漏洞，CyberGym 反超 Mythos 5 与 GPT-5.6 Sol",
+      "intro": "本期聚焦工具更新与业界新闻（覆盖区间 8/14 → 8/21）。头条：Z.ai 8/14 发布的 GLM-5.3 上线不久即被安全研究员用于发现 Cursor 代码编辑器中一个真实存在的严重漏洞，该模型在 CyberGym 漏洞发现基准上得分 84.5%，反超 Mythos 5（83.8%）与 GPT-5.6 Sol（83.6%），ExploitBench 更是从上代 24.4% 翻倍至 54.4%——安全能力再次成为本周模型竞赛的核心叙事。",
+      "note": "⚠️ Claude Desktop app v1.34493.0（8/20）修复 Touch ID 登录崩溃问题的同时，暂时下线了 Touch ID passkey 登录功能——依赖该方式登录 macOS 客户端的用户请留意改用密码或浏览器登录。",
+      "toolVersions": {
+        "asOf": "8/21",
+        "rows": [
+          { "tool": "Claude Code (Anthropic)", "version": "v2.1.238", "update": "claude update" },
+          { "tool": "Codex (OpenAI)", "version": "v0.149.0", "update": "npm update -g @openai/codex" },
+          { "tool": "OpenClaw", "version": "2026.6.34（扩展稳定分支，本周未变）", "update": "openclaw update" }
+        ]
+      },
+      "toolUpdates": [
+        {
+          "tool": "Claude Code",
+          "versionRange": "v2.1.233 → v2.1.238",
+          "items": [
+            { "feature": "v2.1.233（8/14）", "detail": "新增 GitLab merge request 支持（--worktree 与 agents 视图）、opt-in 的 forward_user_identity apps gateway 设置、Linux 上 Bash 的 opt-in memory cgroup 支持；修复云端 session 在环境关闭时被误判为丢失、Notification hooks 未在权限弹窗时触发等问题" },
+            { "feature": "v2.1.234（8/17）", "detail": "新增 CLAUDE_CODE_PROJECT_DIR_NAME 环境变量、footer/statusline 显示 GitLab MR 徽标；账号邮箱现仅用于身份识别；安全加固文件访问以防 NTLM 凭据泄露；修复大量 Remote Control 与队列消息相关问题" },
+            { "feature": "v2.1.235（8/18）", "detail": "新增可选 spellcheck 设置（复用系统拼写检查）；修复权限弹窗中 Shift+Tab 误触发关闭、多行 prompt 高亮字符错位等问题；改进长时间云端 session 的内存/CPU 占用" },
+            { "feature": "v2.1.236（8/19）", "detail": "新增 ANTHROPIC_DEFAULT_MODEL 环境变量、跨 session SendMessage 的 notify_when_idle 通知；修复全屏渲染器永久性失败、/model 选择器高度溢出终端等问题" },
+            { "feature": "v2.1.237（8/20）", "detail": "新增内置 \"Concise\" 输出风格（弱化过程说明、聚焦结果）；修复 LLM gateway 与自定义 base URL session 下的 prompt caching 失效问题" },
+            { "feature": "v2.1.238（8/20）", "detail": "新增 keybindingFlavor 设置（readline 风格 Ctrl+W 行为）、插件市场 headersHelper 用于生成 HTTP 请求头、claude self-hosted-runner 的优雅关闭参数；修复长 session 内存增长、自定义输出风格中途漂移回默认值等问题" }
+          ]
+        },
+        {
+          "tool": "Codex CLI",
+          "versionRange": "v0.147.0 → v0.149.0",
+          "items": [
+            { "feature": "v0.149.0（8/20，转正式版）", "detail": "新增交互式 codex agents 面板，支持搜索、启动、打开、重命名、停止任务等 session 管理操作；此前 0.148.0-alpha 系列的多轮迭代（8/10-8/19）已在此版本中转正" }
+          ]
+        },
+        {
+          "tool": "OpenClaw",
+          "versionRange": "扩展稳定分支本周无新版本（仍为 2026.6.34）；beta 分支新发 2026.8.1-beta.2（8/15）",
+          "items": [
+            { "feature": "2026.8.1-beta.2（8/15，beta 分支）", "detail": "新增 secret egress host binding（将共享密钥绑定到具体 HTTPS 目标主机，CLI/Gateway RPC/Control UI 均生效）、GPT-5.6 Ultra（Sol/Terra/Luna）模型与运行时原子切换支持；新增 openclaw backup sqlite 命令族用于全局/单 agent 数据库快照的创建、校验与恢复；新增 macOS app profiles 支持多实例状态隔离；插件安装新增来源可信度提示，非受信来源需显式 --force 确认" }
+          ]
+        }
+      ],
+      "industryNews": {
+        "headline": {
+          "title": "🔥 GLM-5.3 上线即发现 Cursor 真实漏洞，CyberGym 反超 Mythos 5 与 GPT-5.6 Sol（8/14）— 本期重点",
+          "summary": "Z.ai 8/14 发布 GLM-5.3，主打长时程编码与网络安全能力；发布不久，安全研究员 Joshua Saxe 即用其在 Cursor 代码编辑器中发现一个此前未知的严重漏洞并已私下披露，Cursor 团队正与 Z.ai 协作修复。Z.ai 表示该模型基座与 GLM-5.2 完全相同，全部提升均来自大规模安全场景强化学习后训练。",
+          "points": [
+            "跑分表现 — CyberGym（漏洞发现基准）得分 84.5%，反超 Mythos 5（83.8%）与 GPT-5.6 Sol（83.6%）；ExploitBench（利用链推理与执行）从上代 24.4% 翻倍至 54.4%。",
+            "定价与可用性 — Coding Plan 月付 $18/$80/$168（Lite/Pro/Max 档），年付约合每月 $12.6/$56/$117.6；API 价格暂维持 GLM-5.2 水平（$1.4/$4.4 每百万 token），通用 API 尚在分阶段灰度中。",
+            "产品设计变化 — 新增 low/high/max 三档思考强度（默认 max），不再支持完全关闭思考模式；模型权重计划在发布两周后、经安全加固评估后开源。",
+            "呼应上期趋势 — 继上周 OpenAI GPT-5.6-Cyber 用分级访问管控攻防能力之后，本周 GLM-5.3 展示了同一类安全定向能力在开放竞争格局下扩散得有多快，也让\"模型能自动挖真实漏洞\"从实验室成果变成了可复现的公开事件。"
+          ]
+        },
+        "others": [
+          { "product": "Qwen3.8-27B", "org": "阿里巴巴 Qwen", "date": "8/14", "desc": "开源权重（Apache 2.0）的稠密原生多模态模型，原生 262K 上下文可扩展至 100 万 token，可在消费级硬件甚至笔记本（配合量化）本地运行，编码与长时程 agent 任务能力对齐参数量为其十倍的 Qwen3.7-plus；发布两天内即登上 Hugging Face 最受欢迎模型榜前五" },
+          { "product": "OpenAI Astra 安全评估持续升级", "org": "OpenAI", "date": "8/18", "desc": "继 8/7 首次披露 Astra 内部版本网络安全能力\"无法排除\"触及 Preparedness Framework \"Critical\"门槛后，8/18 Axios 报道称 OpenAI 已围绕该风险开展更大范围的安全体系调整（强化沙盒、监控与训练/评测阶段的访问控制），对外发布时间仍未确定" },
+          { "product": "Claude 服务约 36 分钟中断", "org": "Anthropic", "date": "8/16", "desc": "身份认证故障扩散至 claude.ai、Claude Console、Claude API、Claude Code、Claude Cowork 五大产品线，是 8 月以来 8 天内第 10 次相关事故；本周 Claude Code 订阅者的 50% 周用量临时提升已延长至 8/19" }
+        ],
+        "trending": [
+          { "name": "mattpocock/skills", "url": "https://github.com/mattpocock/skills", "desc": "Matt Pocock 个人 .agents 目录下沉淀的 Claude Code 等 agent 技能集合（\"Skills for Real Engineers\"），本周新增 2000+ star，持续位居 GitHub Trending 前列" },
+          { "name": "volcengine/OpenViking", "url": "https://github.com/volcengine/OpenViking", "desc": "字节跳动火山引擎开源的\"自我演化型\" Context Database，统一 AI agent 的记忆、知识 RAG 与技能管理，本周新增约 950 star" }
+        ],
+        "trends": [
+          "\"安全能力\"正取代传统跑分成为模型发布的头条叙事 — 本周 GLM-5.3 用真实发现的 Cursor 漏洞证明网络安全能力已可被公开复现，叠加 OpenAI Astra 因触及 Critical 门槛而延迟发布，\"模型有多会挖洞/写利用链\"正成为和推理能力同等重要的对外卖点。",
+          "开源权重模型持续挤压\"本地可跑\"的能力上限 — Qwen3.8-27B 用十分之一参数量对齐更大 MoE 模型表现，且可在笔记本本地运行，延续了本月开源阵营贴身追赶闭源前沿的趋势。",
+          "Anthropic 基础设施稳定性持续承压 — 8 天内第 10 次相关事故，与产品用户规模、用量提升等增长叙事同步发生，可靠性正成为除模型能力外又一个值得关注的维度。",
+          "AI 编码工具进入近乎每日迭代节奏 — 本周 Claude Code（6 个版本）、Codex（转正式版）、OpenClaw（beta 分支）均有多次更新，工具链竞争的比拼维度已从\"有没有\"转向\"更新有多快、多稳\"。"
+        ]
+      },
+      "recommendations": [
+        { "name": "升级 Claude Code 到 v2.1.238", "desc": "获取 ANTHROPIC_DEFAULT_MODEL 环境变量、跨 session 空闲通知（notify_when_idle）、内置 Concise 输出风格等新能力，执行 claude update 即可" },
+        { "name": "使用 Codex CLI 的团队可尝鲜 codex agents 面板", "desc": "v0.149.0 转正式版新增交互式任务管理面板，适合同时管理多个后台任务的场景" },
+        { "name": "macOS 上依赖 Touch ID 登录 Claude Desktop 的用户请留意", "desc": "v1.34493.0 修复登录崩溃的同时暂时下线了 Touch ID passkey 登录，近期请改用密码或浏览器方式登录" }
+      ],
+      "references": [
+        { "title": "VentureBeat：GLM-5.3 is here with advanced cyber capabilities — and reportedly already found a 'serious vulnerability' in Cursor", "url": "https://venturebeat.com/technology/glm-5-3-is-here-with-advanced-cyber-capabilities-and-reportedly-already-found-a-serious-vulnerability-in-cursor" },
+        { "title": "SiliconANGLE：Z.ai debuts GLM-5.3 with long-horizon coding, cybersecurity upgrades", "url": "https://siliconangle.com/2026/08/14/z-ai-debuts-glm-5-3-long-horizon-coding-cybersecurity-upgrades/" },
+        { "title": "MarkTechPost：Z.ai Ships GLM-5.3 Without Retraining the Base Model", "url": "https://www.marktechpost.com/2026/08/14/z-ai-ships-glm-5-3-without-retraining-the-base-model-better-at-complex-coding-and-long-horizon-tasks/" },
+        { "title": "VentureBeat：GLM-5.3 hits the API at $1.4/$4.4 per million tokens", "url": "https://venturebeat.com/technology/glm-5-3-hits-the-api-at-1-4-4-4-per-million-tokens" },
+        { "title": "Alibaba Cloud Community：Alibaba Unveils Qwen3.8-27B and Releases Weights of Qwen3.8 Flagship Model", "url": "https://www.alibabacloud.com/blog/alibaba-unveils-qwen3-8-27b-and-releases-weights-of-qwen3-8-flagship-model_603463" },
+        { "title": "Axios：OpenAI Astra may have hit critical cyber threshold, prompting safety overhaul", "url": "https://www.axios.com/2026/08/18/openai-pause-astra-preparedness-framework" },
+        { "title": "OpenAI：Responding to the next frontier of critical cyber capabilities", "url": "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/" },
+        { "title": "explainx.ai：Claude Outage Aug 16 2026 — What Broke, How Long, Fix", "url": "https://explainx.ai/blog/claude-outage-authentication-august-16-2026" },
+        { "title": "Claude Code Changelog", "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" },
+        { "title": "Claude Code Releases", "url": "https://github.com/anthropics/claude-code/releases" },
+        { "title": "Codex Changelog", "url": "https://developers.openai.com/codex/changelog" },
+        { "title": "openai/codex Releases", "url": "https://github.com/openai/codex/releases" },
+        { "title": "OpenClaw Releases", "url": "https://github.com/openclaw/openclaw/releases" },
+        { "title": "Claude Desktop app release notes", "url": "https://support.claude.com/en/articles/12138966-release-notes" },
+        { "title": "GitHub Trending", "url": "https://github.com/trending" }
+      ]
+    },
     {
       "date": "2026-08-14",
       "coverage": { "from": "2026-08-07", "to": "2026-08-14" },
