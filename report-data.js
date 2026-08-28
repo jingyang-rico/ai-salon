@@ -5,9 +5,108 @@
 // lastReportDate: the `date` of issues[0] (the most recently published issue).
 // The weekly job uses it as the start of the next coverage window.
 window.AI_SALON = {
-  "updatedAt": "2026-08-21",
-  "lastReportDate": "2026-08-21",
+  "updatedAt": "2026-08-28",
+  "lastReportDate": "2026-08-28",
   "issues": [
+    {
+      "date": "2026-08-28",
+      "coverage": { "from": "2026-08-21", "to": "2026-08-28" },
+      "headline": "Anthropic 发布 Model Hardware Standard 研究预览，Claude 首次迈向机器人与实验室硬件的物理世界",
+      "intro": "本期聚焦工具更新与业界新闻（覆盖区间 8/21 → 8/28）。头条：Anthropic 8/27 发布 Model Hardware Standard（MHS）研究预览，让 Claude（以及任意其他 LLM）能以标准化方式理解并安全操作机器人、实验室仪器与制造业硬件，是 Anthropic 首次正式迈向物理世界的动作。同期，上周热议的神秘 stealth 模型 Ox Alpha 被 Z.ai 证实即是 GLM-5.3-Flash，一场教科书式的病毒营销落幕；DeepSeek 也发布多模态实验模型正面对标 Claude Opus 4.8。",
+      "toolVersions": {
+        "asOf": "8/28",
+        "rows": [
+          { "tool": "Claude Code (Anthropic)", "version": "v2.1.250", "update": "claude update" },
+          { "tool": "Codex (OpenAI)", "version": "v0.150.1", "update": "npm update -g @openai/codex" },
+          { "tool": "OpenClaw", "version": "2026.6.34（稳定分支未变）／2026.8.1-beta.3（beta 分支）", "update": "openclaw update" }
+        ]
+      },
+      "toolUpdates": [
+        {
+          "tool": "Claude Code",
+          "versionRange": "v2.1.239 → v2.1.250",
+          "items": [
+            { "feature": "v2.1.239（8/21）", "detail": "Bedrock/Vertex/Foundry 默认开启全屏渲染器；新增 /claude-api upgrade 用于 Python SDK 0.x→1.x 迁移；数据驻留工作区推理成本追加 1.1 倍溢价；修复云端 session 恢复到非计划模式、WebFetch 缓存过期等问题" },
+            { "feature": "v2.1.240 / v2.1.241（8/22-23）", "detail": "常规 bug 修复与稳定性改进" },
+            { "feature": "v2.1.243（约 8/24）", "detail": "新增 /usage 的 Loops 用量拆解、modelPicker 设置、promptCacheTtl/subagentPromptCacheTtl 缓存控制、Console 免密登录；原生安装包用 zstd 压缩从 340MB 降至 75MB（Linux）；修复远程 MCP 断线不恢复、auto mode 误判工具不可用等问题" },
+            { "feature": "v2.1.245（8/25 凌晨）", "detail": "修复 glibc 2.44 系统（Arch Linux、CachyOS、Fedora Rawhide 等）上的启动崩溃" },
+            { "feature": "v2.1.246（8/25）", "detail": "新增 /permissions 的 Auto mode 标签页（查看/编辑分类规则）、Bash 通配符 allow 规则的启动期警告、回合耗时展示；修复全屏渲染器 resize 后透明、长单行导致的严重卡顿等问题" },
+            { "feature": "v2.1.247（8/26）", "detail": "新增 SendFeedback 工具（可直接从会话草拟反馈报告）、/claude-api cost-optimize 用于分析优化 API 花费；修复子代理首次调用模型 404 无回退、hook 输出过大撑爆会话等问题" },
+            { "feature": "v2.1.248（8/27）", "detail": "新增 --restricted 标志（移除可执行命令/代码的内置工具）、同机跨 session 消息（SendMessage/ListAgents）、面向 Enterprise AWS Marketplace 计费的 /usage-credits；修复长会话每小时一次的 prompt-cache miss、Claude Desktop 会话 30 天后消失等问题" },
+            { "feature": "v2.1.250（8/28）", "detail": "常规 bug 修复与稳定性改进" }
+          ]
+        },
+        {
+          "tool": "Codex CLI",
+          "versionRange": "v0.149.0 → v0.150.1",
+          "items": [
+            { "feature": "v0.150.0（8/26，正式版）", "detail": "新增 @ 提及跨终端引用任务、/copy 命令新增选择器（回复/代码块/引用块）、无标题任务自动生成标题、markdown 链接可点击渲染、vim 模式点号重复与权限模式循环快捷键、新增 Interrupt hooks（中断时运行命令）；未受信项目不再读取项目级 AGENTS.md；改进凭据脱敏、远程 MCP bearer-token 查找、Windows 沙箱 Unicode 路径处理，修复 Unix 关闭时进程挂起" },
+            { "feature": "v0.150.1（8/27）", "detail": "远程压缩（remote compaction）现将保留的图片计入 token 预算，按需裁剪较旧图片" },
+            { "feature": "0.151.0-alpha 系列（8/26-8/28，共 6 个迭代）", "detail": "面向下一正式版的渐进式改进，尚在预发布阶段" }
+          ]
+        },
+        {
+          "tool": "OpenClaw",
+          "versionRange": "稳定分支本周未变（仍为 2026.6.34）；beta 分支新发 2026.8.1-beta.3（8/24）",
+          "items": [
+            { "feature": "2026.8.1-beta.3（8/24，beta 分支）", "detail": "新增 GPT-5.6 Sol/Terra/Luna/Ultra 推理支持（覆盖 OpenClaw 与 Codex 运行时）；Control UI 首次设置流程扩展到 Custodian 的可选验证配置；新增 Puppeteer 兼容的 CDP relay 支持 paired Chrome 会话；新增显式外部 Gateway 生命周期监督与验证过的重启交接；新增紧凑且校验过的 SQLite 备份与全新目标恢复命令；渠道插件新增共享的持久 ingress 监听器" }
+          ]
+        }
+      ],
+      "industryNews": {
+        "headline": {
+          "title": "🔥 Anthropic 发布 Model Hardware Standard 研究预览：Claude 首次学会安全操作机器人与实验室硬件（8/27）— 本期重点",
+          "summary": "Anthropic 8/27 宣布 Model Hardware Standard（MHS）研究预览，为 AI 模型提供一套标准化方式去理解并安全操作机器人、科研仪器与制造业硬件，无需再依赖纸质手册或少数专家的隐性经验。MHS 建立在 Anthropic 2024 年发布的 MCP 协议之上，模型无关（model-agnostic），对 OpenAI 等其他厂商模型及开源模型同样开放，目前面向科研、机器人与制造业的首批合作伙伴开放测试，尚未开源。该标准最初由 Anthropic 与 HHMI Janelia Research Campus 合作开发。",
+          "points": [
+            "能力范围 — MHS 可让 agent 并行操作显微镜、液体处理器、机械臂等多台实验室/制造设备，执行从常规药物发现实验到量子计算机激光校准等复杂任务；硬件厂商（如工厂机械臂厂商）可在 MHS 中限定安全的移动速度与角度范围，让 AI 无需查手册即可安全操作重型设备。",
+            "效率提升 — 实验室或工厂原本需要数周乃至数月完成的设备对接集成工作，MHS 可将其压缩到几小时甚至几分钟，原因是大多数设备原本彼此之间并不互通。",
+            "落地案例 — Genentech 已在试验中验证：团队仅提供 PDF 格式的实验参数，Claude 即可独立执行完整实验流程。",
+            "呼应本周动态 — 同期 MCP 协议本身完成 2026-07-28 版本的无状态化重构（去掉 initialize 握手与 session 机制，支持无服务器/边缘部署，强化 OAuth/OIDC 鉴权），Claude 系产品本周同步跟进适配；协议基础设施与物理世界接口同时升级，指向 Anthropic 正把 agent 能力从\"能写代码\"扩展到\"能操作现实世界工具\"。"
+          ]
+        },
+        "others": [
+          { "product": "Ox Alpha 揭晓为 GLM-5.3-Flash", "org": "Z.ai", "date": "8/23-8/26", "desc": "8/20 以\"stealth model\"身份匿名上线 OpenRouter/OpenCode 的神秘模型 Ox Alpha（约 100 万 token 上下文，支持文本/图像/视频输入），因免费不限量迅速登顶开发者榜单；8/23 起身份陆续被扒出，8/26 Z.ai 正式确认即是 GLM-5.3-Flash——一场刻意设计的全网压力测试。官方定价约为 GLM-5.2 的十分之一（$0.15/M 输入、$0.5/M 输出，限时再打五折），DeepSWE 基准 63.4 分（GLM-5.2 为 46.2），延续了上期 GLM-5.3 安全能力叙事之外的又一波关注度" },
+          { "product": "DeepSeek-V4-Flash-Vision-Exp", "org": "DeepSeek", "date": "8/21", "desc": "在文本版 V4-Flash 基础上新增图像理解的实验性多模态模型，正面对标 Claude Opus 4.8：己方基准表中 11 项对比赢下 3 项，但 ApexBench 得分 36.5 仍低于 Opus 4.8 的 39.4；已上线 DeepSeek API" },
+          { "product": "Claude Cowork 内置浏览器", "org": "Anthropic", "date": "8/26", "desc": "Claude Desktop 版 Cowork 新增内置浏览器，任务涉及网页时会在侧边栏打开独立浏览器由 Claude 自行浏览、点击、填表，无需借用用户自己的浏览器；已在 Enterprise 上线，未来一周向 macOS/Windows/Linux 的 Pro/Max/Team 用户推广，内置安全管控与登录导入选项" },
+          { "product": "Anthropic 加速 IPO 进程，估值目标约 2 万亿美元", "org": "Anthropic", "date": "8/21", "desc": "据报道 Anthropic 最快 8 月底提交 IPO 申请，目标 10 月上市，估值 2 万亿美元或以上（若成真将超过 SpaceX 的 1.77 万亿美元，成为史上最大 IPO）；预计年化收入将从 5 月披露的 470 亿美元增长十倍以上，达到 1000-1200 亿美元区间，摩根士丹利、高盛与摩根大通领衔承销" }
+        ],
+        "trending": [
+          { "name": "anthropics/claude-plugins-community", "url": "https://github.com/anthropics/claude-plugins-community", "desc": "Anthropic 官方发起的 Claude Cowork / Claude Code 社区插件市场仓库，本周新增约 2069 star，是本周涨幅最快的 Anthropic 生态仓库" },
+          { "name": "tinyhumansai/openhuman", "url": "https://github.com/tinyhumansai/openhuman", "desc": "带本地记忆与 agent 编排能力的个人 AI 项目，本周新增约 2178 star" }
+        ],
+        "trends": [
+          "Anthropic 从\"能写代码\"迈向\"能操作现实世界\" — MHS 研究预览与 MCP 无状态化重构同期落地，agent 基础设施与物理世界接口同步升级，机器人/科研/制造业成为新的能力延伸方向。",
+          "\"神秘模型病毒营销\"成为新的发布打法 — 继上周 GLM-5.3 用真实漏洞证明安全能力后，Z.ai 这次用匿名免费的 Ox Alpha 制造了一整周的社区悬念，最终揭晓为自家 GLM-5.3-Flash，用极低成本换来了远超常规发布的关注度。",
+          "多模态对标 Opus 4.8 成为新的竞赛焦点 — DeepSeek-V4-Flash-Vision-Exp 直接对标 Opus 4.8 的跑分打法，延续了近期开源/中国厂商阵营紧咬闭源前沿的趋势。",
+          "AI 一级市场热度持续走高 — Anthropic 加速冲刺 2 万亿美元 IPO，与本周产品端机器人、浏览器等新能力扩张同步发生，资本市场与产品叙事互相强化。"
+        ]
+      },
+      "recommendations": [
+        { "name": "升级 Claude Code 到 v2.1.250", "desc": "获取 /permissions 的 Auto mode 标签页、SendFeedback 反馈工具、同机跨 session 消息等新能力，执行 claude update 即可" },
+        { "name": "升级 Codex CLI 到 v0.150.1", "desc": "获取 @ 提及跨终端任务引用、/copy 选择器、Interrupt hooks 等新特性，执行 npm update -g @openai/codex 即可" },
+        { "name": "关注 Claude Cowork 内置浏览器灰度进展", "desc": "已在 Enterprise 上线，Pro/Max/Team 用户未来一周内陆续开放，涉及网页操作的任务可留意体验变化" }
+      ],
+      "references": [
+        { "title": "Anthropic：Previewing the Model Hardware Standard", "url": "https://www.anthropic.com/news/model-hardware-standard-research-preview" },
+        { "title": "Bloomberg：Anthropic Tests New Way for Claude to Work With Robots and Scientific Lab Tools", "url": "https://www.bloomberg.com/news/articles/2026-08-27/anthropic-tests-new-way-for-claude-to-work-with-robots-and-scientific-lab-tools" },
+        { "title": "Fortune：Anthropic makes first move into physical AI with universal standard", "url": "https://fortune.com/2026/08/27/anthropic-makes-first-move-into-physical-ai-with-universal-standard-for-scientists-manufacturing/" },
+        { "title": "TechCrunch：Surprise: Z.ai is the AI lab behind the mysterious Ox Alpha model", "url": "https://techcrunch.com/2026/08/26/surprise-z-ai-is-the-ai-lab-behind-the-mysterious-ox-alpha-model/" },
+        { "title": "Bloomberg：China's Z.AI Made Ox Alpha Stealth Model That Rivals DeepSeek", "url": "https://www.bloomberg.com/news/articles/2026-08-26/china-s-z-ai-made-ox-alpha-stealth-model-that-rivals-deepseek" },
+        { "title": "SiliconANGLE：DeepSeek debuts multimodal language model competitive with Opus 4.8", "url": "https://siliconangle.com/2026/08/21/deepseek-debuts-multimodal-language-model-competitive-with-opus-4-8/" },
+        { "title": "The Next Web：DeepSeek launches an experimental multimodal model to rival Anthropic", "url": "https://thenextweb.com/news/deepseek-v4-flash-vision-exp-opus-benchmarks" },
+        { "title": "The New Stack：Anthropic's Claude now has a browser of its own", "url": "https://thenewstack.io/claude-built-in-browser-cowork/" },
+        { "title": "Dataconomy：Anthropic Accelerates IPO Plans, Targeting $2 Trillion Valuation By October", "url": "https://dataconomy.com/2026/08/21/anthropic-accelerates-ipo-plans-targeting-2-trillion/" },
+        { "title": "Fortune：Anthropic reportedly plans a $2 trillion IPO in October", "url": "https://fortune.com/2026/08/13/anthropic-ipo-2-trillion-october-largest-ever-spacex/" },
+        { "title": "Model Context Protocol Blog：The 2026-07-28 Specification", "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28/" },
+        { "title": "Claude Code Changelog", "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" },
+        { "title": "Claude Code Releases", "url": "https://github.com/anthropics/claude-code/releases" },
+        { "title": "Codex Changelog", "url": "https://developers.openai.com/codex/changelog" },
+        { "title": "openai/codex Releases", "url": "https://github.com/openai/codex/releases" },
+        { "title": "OpenClaw Releases", "url": "https://github.com/openclaw/openclaw/releases" },
+        { "title": "Claude Desktop app release notes", "url": "https://support.claude.com/en/articles/12138966-release-notes" },
+        { "title": "GitHub Trending", "url": "https://github.com/trending" }
+      ]
+    },
     {
       "date": "2026-08-21",
       "coverage": { "from": "2026-08-14", "to": "2026-08-21" },
