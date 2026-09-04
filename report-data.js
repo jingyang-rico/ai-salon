@@ -5,9 +5,115 @@
 // lastReportDate: the `date` of issues[0] (the most recently published issue).
 // The weekly job uses it as the start of the next coverage window.
 window.AI_SALON = {
-  "updatedAt": "2026-08-28",
-  "lastReportDate": "2026-08-28",
+  "updatedAt": "2026-09-04",
+  "lastReportDate": "2026-09-04",
   "issues": [
+    {
+      "date": "2026-09-04",
+      "coverage": { "from": "2026-08-28", "to": "2026-09-04" },
+      "headline": "Anthropic 发布 Claude Fable 5.1 与 Mythos 5.1，agentic 基准大幅跃升、cache 读取降价 75%",
+      "intro": "本期聚焦工具更新与业界新闻（覆盖区间 8/28 → 9/4）。头条：Anthropic 9/1 发布 Claude Fable 5.1 与 Mythos 5.1，基础定价维持 Fable 5 水平（$10/$50 每百万 token），但 cache 读取价格骤降 75%，Terminal-Bench-Science、AutomationBench 等 agentic 基准较 Fable 5 大幅跃升。同一周内 Google 发布 Gemini 3.8 Flash（六周内第三款 Flash 模型）、Meta 发布 Muse Spark 1.3，OpenAI 的 GPT-6 Astra 也已限量预览并定档 9/5 全量公开——四大厂商密集刷新旗舰阵容，是近几个月发布最密集的一周。",
+      "note": "⚠️ Claude Cowork 内置浏览器将于 9/10 起在 Enterprise 版默认开启（此前为默认关闭需手动开启）——已明确不希望使用该功能的企业管理员，请提前手动关闭该设置。",
+      "toolVersions": {
+        "asOf": "9/4",
+        "rows": [
+          { "tool": "Claude Code (Anthropic)", "version": "v2.1.260", "update": "claude update" },
+          { "tool": "Codex (OpenAI)", "version": "v0.153.2", "update": "npm update -g @openai/codex" },
+          { "tool": "OpenClaw", "version": "2026.9.1", "update": "openclaw update" }
+        ]
+      },
+      "toolUpdates": [
+        {
+          "tool": "Claude Code",
+          "versionRange": "v2.1.251 → v2.1.260",
+          "items": [
+            { "feature": "v2.1.251（8/28）", "detail": "新增 PreModelSwitch/PostModelSwitch hook 事件、Remote Control 实时流式转发前台 subagent 工具调用、/usage 新增 Spend limit 进度条、/cost 新增单 session prompt-cache 明细；安装包再减小 5MB；修复文件工具在权限检查后被替换的符号链接跟随漏洞、agent teams 队友最终回复无法送达 lead 等问题" },
+            { "feature": "v2.1.252（8/31）", "detail": "修复部分 Mac 上命令报 swap-refused 错误、新项目权限设置无法保存、Remote Control session 偶发卡死、后台任务通知超出大小限制等问题" },
+            { "feature": "v2.1.257（9/1）", "detail": "新增 Claude Fable 5.1（claude-fable-5-1，1M 上下文，$10/$50 每百万 token）支持、Time format / timeZone 设置、auto mode 的 Containment Escape 规则、permissions.blockReadsOutsideWorkingDirectories 设置、/doctor 对过期 sandbox mask 文件的警告；修复大量权限提示、Remote Control、后台 session 相关问题（本版本单条 changelog 超百项，为近期最大更新之一）" },
+            { "feature": "v2.1.258（9/1）", "detail": "修复 macOS 12（Monterey）启动失败、remote/scheduled session 在权限批准重发后因空消息内容报错的问题" },
+            { "feature": "v2.1.259（9/2）", "detail": "新增 managedMcpServers 托管设置（组织统一下发 MCP server）、--permission-prompts none（无人值守环境）、GitLab merge request 识别（glab mr 命令）、claude plugin validate --json；修复并发 session 互相覆盖 ~/.claude.json、prompt cache 在 OAuth token 刷新期间失效等问题" },
+            { "feature": "v2.1.260（9/3）", "detail": "全屏模式新增 diff 面板（/diff 查看未提交改动）、/cost 新增 prompt-cache miss 诊断（工具定义/系统提示变化/TTL 过期）、headless session 新增 /reload-plugins；修复 Fable 5.1 相关 prompt cache 未覆盖工具结果后内容、/model 选择器未展示 Fable 5.1、Bash 权限规则中括号被丢弃等问题" }
+          ]
+        },
+        {
+          "tool": "Codex CLI",
+          "versionRange": "v0.152.0 → v0.153.2",
+          "items": [
+            { "feature": "v0.152.0（约 8/31）", "detail": "Vim 模式新增草稿内 /、? 搜索与 n/N 重复跳转；新增 rate-limit 横幅（可直接查用量/管理额度与套餐）；终端与 codex exec 显示凭据刷新进度（含 Bedrock 重新鉴权）；MCP server 名称支持 :、@、/、. 等包名风格字符" },
+            { "feature": "v0.152.1（9/1）", "detail": "Guardian 审批复核现遵循模型元数据提供的 Node REPL 策略" },
+            { "feature": "v0.153.0（9/3）", "detail": "Vim 模式新增撤销/重做（u / Ctrl+R，完整保留草稿含粘贴内容与附件）；plugin CLI 支持从远程市场列出/安装/卸载插件；TUI 历史记录展示完整 patch、后台终端输入与单条已完成命令；新增 tui.auto_recap = false 可关闭自动 recap（保留手动 /recap）；改进 session 断线重连与 Guardian 审查历史保留" },
+            { "feature": "v0.153.1（9/3）", "detail": "新增 GPT-6-Astra 的 API 配置支持（尚未在 UI/模型选择器中展示）——提前为 9/5 GPT-6 Astra 公开发布做准备" },
+            { "feature": "v0.153.2（9/3）", "detail": "修正 GPT-6-Astra Fast 档位描述文案（\"1.5x\"→\"2x speed\"），无功能变化" }
+          ]
+        },
+        {
+          "tool": "OpenClaw",
+          "versionRange": "2026.6.34（稳定）／2026.8.1-beta.3（beta）→ 2026.9.1，本周内连发三个正式版本",
+          "items": [
+            { "feature": "2026.8.1（8/31，结束 beta 转正）", "detail": "新增按精确文本搜索历史对话、session 可运行在配对设备或云端 worker、交互式 widget 与 dashboard、不暴露明文的私密凭据请求、结构化 agent 提问（web/native 响应卡片）；移除内置 OpenProse 插件，迁移 OpenAI 路由，新增 BytePlus/Mistral/ComfyUI 等官方 provider 包" },
+            { "feature": "2026.8.2（9/1）", "detail": "新增 dock 内直接访问 home agent（无需切换页面）、新的 Linux 桌面客户端（.deb 与 AppImage）、不打断当前工作的后台 session 创建；改进升级安全性（保留配置）、语音可靠性，新增 4 套 UI 主题（CRT、Manuscript、Rosé、Miami）" },
+            { "feature": "2026.9.1（9/3）", "detail": "Mermaid 图表在所有界面中可视化渲染、精简新安装的设置向导、共享 gateway 上的个人技能库、大幅提升更新可靠性（支持自动回滚）；改进高负载下 gateway 稳定性、Codex 工具审批持久化、审批通知可送达聊天频道、Android UI 对齐 web 体验" }
+          ]
+        }
+      ],
+      "industryNews": {
+        "headline": {
+          "title": "🔥 Anthropic 发布 Claude Fable 5.1 与 Mythos 5.1：agentic 基准大幅跃升，cache 读取降价 75%（9/1）— 本期重点",
+          "summary": "Anthropic 9/1 发布 Claude Fable 5.1 与 Mythos 5.1。两者为同一底层模型：Fable 5.1 是面向公众、带完整安全防护的通用版本；Mythos 5.1 则通过受限访问项目开放给经过审核的网络安全与生命科学机构，可解锁被安全防护限制的能力（延续此前 Fable/Mythos 的配对关系）。基础 API 价格与 Fable 5 持平（$10/$50 每百万 token），但 cache 读取价格降低 75%，是本次发布的核心成本变化。",
+          "points": [
+            "agentic 基准大幅提升 — Terminal-Bench-Science 0.1 从 Fable 5 的 24.7% 跃升至 52.6%；AutomationBench 从 17.1% 提升至 31.4%（接近翻倍），均领先 Opus 5；Vals AI 的 Vals Index 以 67.87% 排名第一，小幅领先 Opus 5 的 67.21%。",
+            "成本结构而非基础价格上做文章 — 标准输入/输出定价维持 $10/$50 每百万 token 不变，但 cache 读取价格骤降 75%，对长上下文、重复调用的 agent 工作流尤为友好。",
+            "Claude Code 同日跟进适配 — v2.1.257（9/1）同步上线 claude-fable-5-1 模型 ID 与 1M 上下文支持，后续 v2.1.260 修复了 Fable 5.1 相关的 prompt cache 未完全覆盖问题。",
+            "呼应本周同期动态 — Google（Gemini 3.8 Flash）、Meta（Muse Spark 1.3）同周发布新模型，OpenAI GPT-6 Astra 也已限量预览并定档 9/5 公开发布，四大厂商罕见地在同一周内集中刷新旗舰/次旗舰阵容。"
+          ]
+        },
+        "others": [
+          { "product": "Gemini 3.8 Flash + 3.8 Flash Cyber", "org": "Google", "date": "9/2", "desc": "六周内第三款 Flash 模型，基于 3.7 Flash 而非全新基座、主打\"更舍得烧思考 token\"换取长时程编码与自主 agent 能力提升，公开基准中三项反超 Claude Opus 5；支持文本/图像/音频/视频/PDF 输入，1M 上下文、64K 输出；定价 $0.75/$3.75 每百万 token（2026-12-31 前），2027-01-01 起翻倍至 $1.5/$7.5；受限的 Cyber 安全变体目前仅开放给可信测试者与政府机构" },
+          { "product": "Muse Spark 1.3", "org": "Meta", "date": "9/2", "desc": "在 agentic 与编码任务上较 1.2 版效率大幅提升（工具调用减少约 20%、token 消耗减少约 25%），xhigh 档位 Artificial Analysis 智能指数 61 分，与 GPT-5.6 Sol（max）、Grok 4.6（high）打平；定价与上代持平，即将向 Instagram/Facebook 与 Meta AI 推广，max 推理档位待进一步安全测试后跟进" },
+          { "product": "GPT-6 Astra 限量预览", "org": "OpenAI", "date": "9/3（计划 9/5 全量公开）", "desc": "继 7 月 Hugging Face 泄露事件后延后发布、追加安全防护措施；官方称在 computer use、浏览、软件工程、网络安全、科研与专业工作等方向达到当前最先进水平，目前仅面向受信合作伙伴开放；Codex CLI v0.153.1（9/3）已提前加入其 API 配置支持（尚未在 UI 展示）" },
+          { "product": "DeepSeek Harness 开源发布", "org": "DeepSeek", "date": "9/3-9/4", "desc": "\"everything-is-a-plugin\"架构的开源 agent 运行时，构建于 Cordis 插件框架之上，MIT 协议，Node.js 实现；开发者预览版发布数小时内狂揽 3 万+ star（现 20 万+ star / 逾 2 万 fork），登顶 GitHub Trending，社区插件生态已快速涌现；官方明确仍处早期迭代阶段，将有破坏性变更" }
+        ],
+        "trending": [
+          { "name": "deepseek-ai/deepseek-harness", "url": "https://github.com/deepseek-ai/deepseek-harness", "desc": "DeepSeek 官方开源的\"everything-is-a-plugin\" agent 运行时，本周新增 3 万+ star（现 20 万+ star），GitHub Trending 周榜第一" }
+        ],
+        "trends": [
+          "模型发布节奏进一步压缩 — 一周内 Anthropic（Fable 5.1/Mythos 5.1）、Google（Gemini 3.8 Flash）、Meta（Muse Spark 1.3）三家正式发布新模型，OpenAI GPT-6 Astra 也已限量预览并定档 9/5 公开，四大厂商密集程度刷新近期纪录。",
+          "推理成本结构成为新竞争维度，而非单纯降价 — Fable 5.1 基础价格不变但 cache 读取降价 75%，Gemini 3.8 Flash 则用\"限时低价、明年翻倍\"管理算力预期，各家开始在成本结构细节而非 headline 价格上做文章。",
+          "开源 agent 运行时赛道升温 — DeepSeek Harness 开源即在数小时内狂揽 3 万+ star，与 Claude Code/Codex/OpenClaw 本周高频更新形成呼应，coding agent 工具链的竞争已从\"模型强不强\"扩展到\"运行时框架开不开放\"。",
+          "Claude 生态持续向常驻 agent 演进 — Cowork 内置浏览器计划 9/10 起在 Enterprise 默认开启，叠加 Claude Code 本周新增 diff 面板、managedMcpServers 等企业级能力，Anthropic 正把 Claude Code/Cowork 打造成默认接管更多日常操作的常驻助手。"
+        ]
+      },
+      "recommendations": [
+        { "name": "升级 Claude Code 到 v2.1.260", "desc": "获取全屏 /diff 面板、/cost 的 prompt-cache miss 诊断、managedMcpServers 托管 MCP server 等新能力，执行 claude update 即可" },
+        { "name": "评估迁移到 Claude Fable 5.1", "desc": "cache 密集型、长时程 agent 工作流可直接获得 75% cache 读取降价，同时 Terminal-Bench-Science、AutomationBench 等 agentic 基准较 Fable 5 大幅提升" },
+        { "name": "升级 Codex CLI 到 v0.153.2，并关注 9/5 GPT-6 Astra 公开发布", "desc": "v0.153.1 已提前加入 GPT-6 Astra 的 API 配置支持，公开发布后可第一时间在 Codex 中启用" },
+        { "name": "Enterprise 管理员提前确认 Cowork 内置浏览器设置", "desc": "9/10 起默认开启（此前默认关闭），如需保持关闭请提前手动设置，避免自动切换带来的意外" }
+      ],
+      "references": [
+        { "title": "Anthropic：Introducing Claude Fable 5.1 and Claude Mythos 5.1", "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1" },
+        { "title": "VentureBeat：Anthropic's Claude Fable 5.1 and Mythos 5.1 arrive with a 75% cost reduction for Fable cache reads", "url": "https://venturebeat.com/technology/anthropics-claude-fable-5-1-and-mythos-5-1-arrive-with-a-75-cost-reduction-for-fable-cache-reads" },
+        { "title": "MacRumors：Anthropic Launches Claude Fable 5.1 With Lower Costs and Fewer False Positives", "url": "https://www.macrumors.com/2026/09/01/anthropic-claude-fable-5-1/" },
+        { "title": "Vellum：Claude Fable 5.1 & Claude Mythos 5.1 Benchmarks Explained", "url": "https://www.vellum.ai/blog/claude-fable-5-1-mythos-5-1-benchmarks-explained" },
+        { "title": "Google Blog：Introducing Gemini 3.8 Flash and 3.8 Flash Cyber", "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/" },
+        { "title": "The Register：With Gemini 3.8 Flash, Google reminds everyone it's still in the race", "url": "https://www.theregister.com/ai-and-ml/2026/09/02/with-gemini-38-flash-google-reminds-everyone-its-still-in-the-race/5294049" },
+        { "title": "9to5Google：Gemini 3.8 Flash rolling out three weeks after last release", "url": "https://9to5google.com/2026/09/02/gemini-3-8-flash-launch/" },
+        { "title": "Bloomberg：Meta Releases AI Model Muse Spark 1.3, Edges Closer to OpenAI, Anthropic", "url": "https://www.bloomberg.com/news/articles/2026-09-02/meta-releases-more-powerful-ai-model-edging-closer-to-rivals" },
+        { "title": "Axios：Meta debuts Muse Spark 1.3 as personal agent work continues", "url": "https://www.axios.com/2026/09/02/meta-debuts-muse-spark-13-as-personal-agent-work-continues" },
+        { "title": "Meta AI Research：Introducing Muse Spark 1.3", "url": "https://research.meta.ai/blog/introducing-muse-spark-1-3" },
+        { "title": "9to5Mac：OpenAI releasing major upgrade to ChatGPT and Codex with GPT-6 Astra", "url": "https://9to5mac.com/2026/09/03/openai-releasing-major-upgrade-to-chatgpt-and-codex-with-gpt-6-astra-details-here/" },
+        { "title": "Wikipedia：GPT-6 Astra", "url": "https://en.wikipedia.org/wiki/GPT-6_Astra" },
+        { "title": "The New Stack：DeepSeek open sources an agent harness where everything is a plugin", "url": "https://thenewstack.io/deepseek-harness-open-source-plugins/" },
+        { "title": "deepseek-ai/deepseek-harness（GitHub）", "url": "https://github.com/deepseek-ai/deepseek-harness" },
+        { "title": "Anthropic Help Center：Set up browser use in Claude Cowork for Team and Enterprise plans", "url": "https://support.claude.com/en/articles/16635803-set-up-browser-use-in-claude-cowork-for-team-and-enterprise-plans" },
+        { "title": "Claude Code Changelog", "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" },
+        { "title": "Claude Code Releases", "url": "https://github.com/anthropics/claude-code/releases" },
+        { "title": "Codex Changelog", "url": "https://developers.openai.com/codex/changelog" },
+        { "title": "openai/codex Releases", "url": "https://github.com/openai/codex/releases" },
+        { "title": "OpenClaw Releases", "url": "https://github.com/openclaw/openclaw/releases" },
+        { "title": "Claude Desktop app release notes", "url": "https://support.claude.com/en/articles/12138966-release-notes" },
+        { "title": "GitHub Trending", "url": "https://github.com/trending" }
+      ]
+    },
     {
       "date": "2026-08-28",
       "coverage": { "from": "2026-08-21", "to": "2026-08-28" },
