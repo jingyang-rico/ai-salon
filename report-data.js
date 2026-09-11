@@ -5,9 +5,112 @@
 // lastReportDate: the `date` of issues[0] (the most recently published issue).
 // The weekly job uses it as the start of the next coverage window.
 window.AI_SALON = {
-  "updatedAt": "2026-09-04",
-  "lastReportDate": "2026-09-04",
+  "updatedAt": "2026-09-11",
+  "lastReportDate": "2026-09-11",
   "issues": [
+    {
+      "date": "2026-09-11",
+      "coverage": { "from": "2026-09-04", "to": "2026-09-11" },
+      "headline": "OpenAI 正式发布 GPT-6 Astra，Computer Use 大幅跃升、定价创公司新高",
+      "intro": "本期聚焦工具更新与业界新闻（覆盖区间 9/4 → 9/11）。头条：OpenAI 9/3 起分阶段发布 GPT-6 Astra，本周面向全体 ChatGPT 用户与 API/Azure/AWS Bedrock 全面开放，以 Computer Use（电脑操作）能力大幅跃升为核心卖点，定价 $10/$50 每百万 token 成为 OpenAI 迄今最贵模型。同一周内 Anthropic 一周内锁定约 800 亿美元算力合同、IPO 延后至 10 月中并落定 150 亿美元信用额度，DeepSeek 发布低价高效的 V4.1 Flash，xAI 面向企业开放 Grok Bot——头部厂商在模型能力、基础设施与产品形态上同时加码。",
+      "note": "⚠️ 2026-09-08 发布的 Windows 累积更新（KB5124008/KB5122877）会导致 Claude Cowork 桌面版沙盒（Plan9/virtiofs 文件共享）失效，本地命令与文件访问功能中断（对话与文件读写多数仍可用）；受影响用户可临时卸载该补丁（wusa /uninstall /kb:5124008）并重启，微软已在准备修复。",
+      "toolVersions": {
+        "asOf": "9/11",
+        "rows": [
+          { "tool": "Claude Code (Anthropic)", "version": "v2.1.268", "update": "claude update" },
+          { "tool": "Codex (OpenAI)", "version": "v0.154.0", "update": "npm update -g @openai/codex" },
+          { "tool": "OpenClaw", "version": "2026.9.4", "update": "openclaw update" }
+        ]
+      },
+      "toolUpdates": [
+        {
+          "tool": "Claude Code",
+          "versionRange": "v2.1.261 → v2.1.268",
+          "items": [
+            { "feature": "v2.1.261（9/4）", "detail": "新增 /status 与 claude doctor 的组织策略诊断行、bashOutputMaxChars/taskOutputMaxChars 设置（内联输出上限提至 128K 字符）、--append-subagent-system-prompt-file、/skill-doctor（查看未使用的已加载技能及其上下文开销）；修复大量输入丢字、Remote Control 权限模式陈旧、会话恢复丢失并行工具调用上下文等问题；VS Code 新增 MCP 服务器添加/移除表单、打开中会话的空心环标记、会话列表右键 Archive session" },
+            { "feature": "v2.1.263（9/6）", "detail": "常规 bug 修复与稳定性改进" },
+            { "feature": "v2.1.265（9/8）", "detail": "新增 --plugin-dir 指向插件文件夹（自动感知增删子文件夹）、工具结果落盘 1GB 上限；修复大量 prompt-cache 复用失效问题（resume 后子代理工具列表/系统提示重写、agent teammates 与子代理钩子上下文移出提示前缀等）、Remote Control 会话提前发送回合结束信号、/model opusplan[1m] 被拒等问题" },
+            { "feature": "v2.1.266（9/8）", "detail": "修复 2.1.265 引入的 CLAUDE_CODE_USE_GATEWAY 回归——该未文档化环境变量本应仅在同时设置 ANTHROPIC_BASE_URL 与 ANTHROPIC_AUTH_TOKEN 时生效，2.1.265 中意外开始独立强制 Cloud gateway 登录，导致搭配 API key/apiKeyHelper 的网关与代理配置全部请求失败" },
+            { "feature": "v2.1.267（9/9）", "detail": "新增 maxEffortLevel 设置（可对所有 provider 限制最高 effort 档位）、--system-prompt-snapshot off（每次请求重新渲染系统提示，便于调试提示词）；修复 Cowork 云端定时任务在强制沙盒组织下启动失败、大量 prompt-cache 与 resume 相关问题；VS Code 修复循环父链导致的扩展宿主 100% CPU 占用、WSL2 粘贴截图变乱码等问题" },
+            { "feature": "v2.1.268（9/10）", "detail": "新增 Claude apps gateway 定价透传（/cost 与花费计量对齐）、gatewayInternalNetworks 托管设置、claude plugin install/uninstall/update/enable/disable 的 --json 输出、发布 artifact 的浏览器标签页图标；修复自 2.1.265 起第三方 Anthropic 兼容端点全部请求 HTTP 400 的回归、WebFetch 对无响应服务器无限挂起（现 300 秒超时）、符号链接目录（/etc /tmp /var /bin）上的权限规则未生效等安全相关问题；Code Review 改进多项误判与漏报场景" }
+          ]
+        },
+        {
+          "tool": "Codex CLI",
+          "versionRange": "v0.153.2 → v0.154.0（另有 0.155.0-alpha 系列在研发中）",
+          "items": [
+            { "feature": "v0.154.0（9/9，转正式版）", "detail": "model picker 与 Amazon Bedrock 目录新增 GPT-6-Astra；实验性 --worktree / /worktree 支持（为新建或 fork 的会话创建隔离检出，可浏览与恢复）；Codex 后台工作时可直接内联回答提问（沿用建议选项或自定义文本，草稿不丢失）；Windows 会话可共享后台 Codex daemon（含生命周期管理命令与统一更新）；Vim 模式新增 R 替换模式（支持撤销与点号重复）及更可靠的旧版终端 Escape 处理；/copy 支持保留富文本格式、可复制 status 输出或单个会话字段；修复会话未自动感知新装插件工具、外部插件变更后技能未刷新、MCP OAuth 刷新协调、macOS 沙盒终端输入注入等问题；移除已弃用的 codex mcp-server 入口" },
+            { "feature": "0.155.0-alpha 系列（9/10-9/11）", "detail": "面向下一正式版的持续预发布迭代，尚未附带正式 changelog 说明" }
+          ]
+        },
+        {
+          "tool": "OpenClaw",
+          "versionRange": "2026.9.1 → 2026.9.4，另发布 2026.6.35 为 6 月扩展稳定分支收官版本",
+          "items": [
+            { "feature": "2026.9.3（9/8）", "detail": "新增分阶段安全更新（候选版本隔离校验）、warm prompt cache 保留带来的性能提升、agent 私有的 Skill Workshop 持久化集合、浏览器标签页实时重绘、provider 账号管理整合、可搜索的会议库（含转录归档）、可选安装的 Team Reports（GitHub/Discord 活动追踪）" },
+            { "feature": "2026.6.35（9/10，6 月扩展稳定分支收官版本）", "detail": "加固内置 provider 与频道适配器的安全边界，改进 provider 响应处理安全性、agent/gateway 路径的长时投递可靠性，增强内置插件应对畸形请求与超时的韧性" },
+            { "feature": "2026.9.4（9/11）", "detail": "新增更新失败后的恢复能力、Control UI 统一插件管理、可从本地项目直接预置云端会话、键盘驱动的终端提示、GPT Image 2.5 变体支持；改进会话历史可靠性（支持中断流恢复）" }
+          ]
+        }
+      ],
+      "industryNews": {
+        "headline": {
+          "title": "🔥 OpenAI 正式发布 GPT-6 Astra：Computer Use 大幅跃升，定价创公司新高（9/3 起分阶段推广）— 本期重点",
+          "summary": "OpenAI 9/3 先向首批经过审核的网络安全项目合作组织开放 GPT-6 Astra，随后数日内向所有 ChatGPT Plus/Pro/Business/Enterprise 用户及 OpenAI API、Microsoft Azure、AWS Bedrock 全面开放。该模型延续自 7 月 Hugging Face 泄露事件后的发布延期，追加了安全防护措施；官方称其在 computer use、浏览、软件工程、网络安全、科研与专业工作等方向达到当前最先进水平。",
+          "points": [
+            "Computer Use 是本次发布的核心卖点——OSWorld 2.0 得分 72.6%（GPT-5.6 Sol 为 65.7%），单任务耗时从约 75 分钟降至约 40 分钟（降幅 47%）；ScreenSpot-Pro（界面像素级定位）得分 92.7%，远超 Sol 的 76.9%。",
+            "ARC-AGI-3 上，Astra 在 96% 的关卡中超过人类动作效率基线，基本追平人类水平。",
+            "定价 $10/$50 每百万 token，是 GPT-5.6 Sol 的 2.5 倍，成为 OpenAI 迄今最贵的模型，反映 computer use 等高算力能力的成本代价。",
+            "Codex CLI v0.154.0（9/9）同步在 model picker 与 Bedrock 目录中加入 GPT-6-Astra 支持，呼应上周 Codex 已提前完成的 API 配置预热。"
+          ]
+        },
+        "others": [
+          { "product": "锁定约 800 亿美元算力合同 + IPO 延后至 10 月中、落定 150 亿美元信用额度", "org": "Anthropic", "date": "8/26-9/7", "desc": "一周内与 Nscale（6 年 450 亿美元）、Lambda（350 亿美元）签订约 800 亿美元算力合同，覆盖 460MW 算力容量，年化收入已从 2025 年底约 90 亿美元增长至超 300 亿美元；同期公开招股书与正式路演的时间点推迟，路演最早不早于 10 月中，摩根士丹利牵头的 150 亿美元循环信用额度也进入收尾阶段（较一年前约 25 亿美元增长六倍），高盛、摩根大通、花旗参与" },
+          { "product": "DeepSeek-V4.1-Flash 正式发布，取代 V4-Flash", "org": "DeepSeek", "date": "9/10", "desc": "552B 参数 MoE、全新 Causal Encoder-Decoder 架构，输入激活 80 亿参数/输出激活 160 亿参数，1M 上下文，原生图像理解，45T token 从头训练；全局 KV cache 降至每 token 890 字节（约为 V4-Flash 的四分之一）；定价谷时每百万 token 缓存输入 $0.003／输入 $0.15／输出 $0.60（高峰时段翻倍），部分 agentic 基准（Terminal-Bench 2.1、AutomationBench）追平或反超 GPT-5.6 Sol 与 Claude Opus 5，但落后于二者的 Terminal-Bench 3.0/4.0 与整仓库编码能力" },
+          { "product": "Grok Bot 面向企业开放", "org": "xAI", "date": "9/3 起，本周持续推广", "desc": "面向企业推出常驻云端 AI Bot：Bot 名册、在线状态提示、电脑操作能力、内嵌卡片/小组件、团队群聊与可自动触发的 routine；新增审计日志（管理/安全/鉴权事件）、Action Recording（记录 Bot 实际操作）、OpenTelemetry 导出等企业级访问、网络与审计管控；向 Grok 与 Cursor Enterprise 客户提供两周免费试用" }
+        ],
+        "trending": [
+          { "name": "DietrichGebert/ponytail", "url": "https://github.com/DietrichGebert/ponytail", "desc": "\"lazy by design\" 的 YAGNI 编码 agent 规则集，主张\"最好的代码是从未写出的代码\"，本周新增约 1.18 万 star（GitHub Trending 周榜第三），累计 12.9 万+ star" },
+          { "name": "stablyai/orca", "url": "https://github.com/stablyai/orca", "desc": "面向多 agent 并行编排的桌面 ADE，基于 git worktree 隔离运行 Claude Code、Codex、OpenCode 等 30+ 编码 agent；MIT 协议不加价、直接调用各家 API，本周新增约 5200 star（周榜第十一），累计 5.9 万+ star" }
+        ],
+        "trends": [
+          "四大厂商的\"旗舰周\"仍在延续——继上周 Fable 5.1/Gemini 3.8 Flash/Muse Spark 1.3 密集发布后，本周轮到 OpenAI GPT-6 Astra 全量登场，coding/agent 工具链（Claude Code、Codex）也在发布当周即跟进模型支持，产品与模型协同速度进一步压缩。",
+          "Computer Use 正式成为旗舰模型的核心竞速维度——GPT-6 Astra 以 OSWorld 2.0、ScreenSpot-Pro 等电脑操作基准为主打卖点，定价也史上最高，说明\"能自主操作电脑\"正取代纯文本推理成为新的差异化能力。",
+          "算力与资本叙事和产品发布同步加码——Anthropic 一周内锁定 800 亿美元算力合同、IPO 路演推迟到 10 月中但信用额度六倍扩容，反映头部厂商仍在为下一轮模型训练与部署提前囤积资源。",
+          "低价高效模型继续挤压高价旗舰的性价比空间——DeepSeek V4.1 Flash 用远低于 Opus 5/GPT-5.6 Sol 的价格在多项 agentic 基准上打平甚至反超，开源/低成本阵营对旗舰模型的性价比压力持续存在。"
+        ]
+      },
+      "recommendations": [
+        { "name": "升级 Claude Code 到 v2.1.268", "desc": "修复自 2.1.265 起第三方 Anthropic 兼容端点 HTTP 400 的回归、WebFetch 无限挂起、符号链接目录权限规则未生效等安全相关问题，建议尽快执行 claude update" },
+        { "name": "升级 Codex CLI 到 v0.154.0，评估 GPT-6 Astra 的 Computer Use 能力", "desc": "v0.154.0 已在 model picker 与 Bedrock 目录中加入 GPT-6-Astra 支持；该模型定价较高（$10/$50/M token），适合优先用于电脑操作类高价值任务而非通用场景" },
+        { "name": "Windows 上使用 Claude Cowork 桌面版的用户请留意本周 KB5124008/KB5122877 补丁问题", "desc": "会导致沙盒无法访问本机文件，受影响可临时卸载该补丁（wusa /uninstall /kb:5124008）并重启，或等待微软官方修复" },
+        { "name": "成本敏感、高频调用的 agent 场景可评估 DeepSeek V4.1 Flash", "desc": "部分 agentic 基准打平甚至反超 GPT-5.6 Sol / Claude Opus 5，价格仅为二者的数十分之一，但注意其谷峰分时定价与整仓库编码能力的差距" }
+      ],
+      "references": [
+        { "title": "OpenAI：GPT-6 Astra: A new generation of intelligence", "url": "https://openai.com/index/gpt-6-astra/" },
+        { "title": "CNBC：OpenAI announces rollout of GPT-6 Astra model", "url": "https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html" },
+        { "title": "Fortune：OpenAI launches GPT-6 Astra, its most powerful model yet", "url": "https://fortune.com/2026/09/03/openai-debuts-gpt-6-astra-computer-use-greg-brockman-says-start-of-agi/" },
+        { "title": "Al Jazeera：OpenAI unveils GPT-6 Astra amid rising scrutiny and safety concerns", "url": "https://www.aljazeera.com/economy/2026/9/4/openai-unveils-gpt-6-astra-amid-rising-scrutiny-and-safety" },
+        { "title": "Vellum：GPT-6 Astra Benchmarks Explained", "url": "https://www.vellum.ai/blog/gpt-6-astra-benchmarks-explained" },
+        { "title": "247wallst：Anthropic Just Committed $35 Billion to Compute It Has Not Raised the Money For", "url": "https://247wallst.com/investing/2026/09/02/anthropic-just-committed-35-billion-to-compute-it-has-not-raised-the-money-for/" },
+        { "title": "Value Add Pulse：Anthropic's $80 billion compute-buying week explained", "url": "https://valueaddvc.com/pulse/anthropic-80-billion-compute-week-followup-2026" },
+        { "title": "Forbes：Anthropic Delays IPO To Mid-October, Locks In $15 Billion Credit Line", "url": "https://www.forbes.com/sites/jonmarkman/2026/09/07/anthropic-delays-ipo-to-mid-october-locks-in-15-billion-credit-line/" },
+        { "title": "Bloomberg：DeepSeek's New Low-Cost Model Deals a Fresh Blow to OpenAI, Z.ai", "url": "https://www.bloomberg.com/news/articles/2026-09-10/deepseek-s-new-low-cost-model-deals-a-fresh-blow-to-openai-z-ai" },
+        { "title": "officechai：DeepSeek V4.1 Flash Matches GPT 5.6 Sol, Claude Opus 5 On Some Benchmarks At Substantially Lower Pricing", "url": "https://officechai.com/ai/deepseek-v4-1-flash-benchmarks-pricing/" },
+        { "title": "Superpower Daily：xAI Opens Grok Bot to Enterprises With Controls for Autonomous Workers", "url": "https://superpowerdaily.com/posts/xai-opens-grok-bot-to-enterprises-with-controls-for-autonomous-workers" },
+        { "title": "GitHub Issue：[BUG] Cowork (Windows): all Plan9 shares fail after Windows update KB5124008", "url": "https://github.com/anthropics/claude-code/issues/92984" },
+        { "title": "openai/codex Release 0.154.0", "url": "https://github.com/openai/codex/releases/tag/rust-v0.154.0" },
+        { "title": "DietrichGebert/ponytail（GitHub Trending）", "url": "https://github.com/DietrichGebert/ponytail" },
+        { "title": "stablyai/orca（GitHub Trending）", "url": "https://github.com/stablyai/orca" },
+        { "title": "Claude Code Changelog", "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" },
+        { "title": "Claude Code Releases", "url": "https://github.com/anthropics/claude-code/releases" },
+        { "title": "Codex Changelog", "url": "https://developers.openai.com/codex/changelog" },
+        { "title": "openai/codex Releases", "url": "https://github.com/openai/codex/releases" },
+        { "title": "OpenClaw Releases", "url": "https://github.com/openclaw/openclaw/releases" },
+        { "title": "Claude Desktop app release notes", "url": "https://support.claude.com/en/articles/12138966-release-notes" },
+        { "title": "GitHub Trending", "url": "https://github.com/trending" }
+      ]
+    },
     {
       "date": "2026-09-04",
       "coverage": { "from": "2026-08-28", "to": "2026-09-04" },
